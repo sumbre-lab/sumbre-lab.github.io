@@ -478,7 +478,7 @@ h2 em { color: #764ba2; font-family: Georgia, serif; font-weight: 400; }
   .whistle-cards { grid-template-columns: repeat(3, 1fr); }
 }
 
- (max-width: 900px) {
+@media (max-width: 900px) {
   .site-header { height: 72px; }
   .menu-toggle { display: grid; gap: 6px; }
   .menu-toggle span { display: block; width: 24px; height: 1px; background: var(--ink); }
@@ -601,17 +601,20 @@ h2 em { color: #764ba2; font-family: Georgia, serif; font-weight: 400; }
 
 
 /* Simplified input-preparation panel */
-.workflow-panel[data-workflow-panel="0"] { display: grid; align-items: center; }
+.workflow-stage:has(.workflow-panel[data-workflow-panel="0"].active) { min-height: 390px; }
+.workflow-panel[data-workflow-panel="0"] { min-height: 390px; display: grid; align-items: center; }
 .workflow-panel[data-workflow-panel="0"][hidden] { display: none; }
-.workflow-flow-input { width: min(920px, 100%); margin: 0 auto; gap: clamp(32px, 6vw, 84px); }
-.workflow-flow-input .waveform-node, .workflow-flow-input .spectrogram-node { width: min(42%, 390px); min-height: 270px; padding: 32px; }
+.workflow-flow-input { width: min(920px, 100%); min-height: 0; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 390px) 34px minmax(0, 390px); align-items: center; justify-content: center; gap: clamp(24px, 4vw, 54px); }
+.workflow-flow-input .waveform-node, .workflow-flow-input .spectrogram-node { width: 100%; min-height: 240px; padding: 32px; }
+.workflow-flow-input .workflow-arrow { justify-self: center; align-self: center; }
+.workflow-flow-input .workflow-arrow::before { transform: rotate(45deg); }
 .workflow-flow-input .waveform-node svg { height: 122px; margin: 4px 0 0; }
 .workflow-flow-input .real-waveform path { fill: none; stroke: #1d1d1f; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
 .workflow-flow-input .spectrogram-stack { width: 210px; height: 145px; }
 .workflow-flow-input .spectrogram-stack img { width: 108px; height: 108px; }
- (max-width: 580px) {
-  .workflow-panel[data-workflow-panel="0"] { min-height: 590px; }
-  .workflow-flow-input { width: 100%; gap: 22px; }
+@media (max-width: 580px) {
+  .workflow-stage:has(.workflow-panel[data-workflow-panel="0"].active), .workflow-panel[data-workflow-panel="0"] { min-height: 540px; }
+  .workflow-flow-input { width: 100%; grid-template-columns: 1fr; gap: 18px; }
   .workflow-flow-input .waveform-node, .workflow-flow-input .spectrogram-node { width: 100%; min-height: 205px; }
   .workflow-flow-input .waveform-node svg { height: 86px; }
 }
