@@ -6,7 +6,7 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=153" />
+    <link rel="stylesheet" href="../styles.css?v=155" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
@@ -219,21 +219,16 @@
 
           <div class="workflow-stage" aria-live="polite">
             <section class="workflow-panel active" data-workflow-panel="0" role="tabpanel">
-              <div class="workflow-panel-heading"><span>01 / INPUT PREPARATION</span><strong>Raw audio becomes model-ready spectrograms.</strong></div>
               <div class="workflow-flow workflow-flow-input">
                 <article class="workflow-node waveform-node">
                   <span>RAW AUDIO</span>
-                  <svg viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true"><path d="M0 46 C8 46 8 18 16 46 S24 74 32 46 S40 28 48 46 S56 65 64 46 S72 10 80 46 S88 82 96 46 S104 26 112 46 S120 61 128 46 S136 31 144 46 S152 72 160 46 S168 15 176 46 S184 77 192 46 S200 23 208 46 S216 64 224 46 S232 34 240 46 S248 69 256 46 S264 19 272 46 S280 75 288 46 S296 30 304 46 S312 57 320 46" /></svg>
-                  <small>96 kHz underwater recordings</small>
+                  <svg class="real-waveform" viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true"><path d="M0 46 L4 44 L8 49 L12 39 L16 55 L20 31 L24 62 L28 20 L32 70 L36 35 L40 53 L44 42 L48 48 L52 29 L56 65 L60 16 L64 76 L68 27 L72 58 L76 40 L80 51 L84 44 L88 47 L92 33 L96 61 L100 23 L104 69 L108 37 L112 55 L116 43 L120 49 L124 41 L128 52 L132 30 L136 66 L140 19 L144 73 L148 34 L152 57 L156 38 L160 54 L164 42 L168 48 L172 35 L176 60 L180 25 L184 68 L188 32 L192 59 L196 40 L200 51 L204 45 L208 47 L212 36 L216 58 L220 28 L224 65 L228 39 L232 53 L236 43 L240 49 L244 40 L248 55 L252 31 L256 63 L260 22 L264 71 L268 36 L272 56 L276 41 L280 50 L284 44 L288 48 L292 38 L296 57 L300 30 L304 62 L308 41 L312 52 L316 45 L320 46" /></svg>
                 </article>
                 <span class="workflow-arrow" aria-hidden="true">→</span>
                 <article class="workflow-node spectrogram-node">
                   <span>0.4 S WINDOWS</span>
                   <div class="spectrogram-stack"><img src="../assets/images/pipeline/window-01.png" alt="" /><img src="../assets/images/pipeline/window-02.png" alt="" /><img src="../assets/images/pipeline/window-03.png" alt="" /></div>
-                  <small>Log-power · 2–22 kHz</small>
                 </article>
-                <span class="workflow-arrow" aria-hidden="true">→</span>
-                <article class="workflow-node compact-node"><strong>224 × 224</strong><small>normalized spectrograms</small></article>
               </div>
             </section>
 

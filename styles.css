@@ -600,6 +600,22 @@ h2 em { color: #764ba2; font-family: Georgia, serif; font-weight: 400; }
 }
 
 
+/* Simplified input-preparation panel */
+.workflow-panel[data-workflow-panel="0"] { display: grid; align-items: center; }
+.workflow-panel[data-workflow-panel="0"][hidden] { display: none; }
+.workflow-flow-input { width: min(920px, 100%); margin: 0 auto; gap: clamp(32px, 6vw, 84px); }
+.workflow-flow-input .waveform-node, .workflow-flow-input .spectrogram-node { width: min(42%, 390px); min-height: 270px; padding: 32px; }
+.workflow-flow-input .waveform-node svg { height: 122px; margin: 4px 0 0; }
+.workflow-flow-input .real-waveform path { fill: none; stroke: #1d1d1f; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-flow-input .spectrogram-stack { width: 210px; height: 145px; }
+.workflow-flow-input .spectrogram-stack img { width: 108px; height: 108px; }
+ (max-width: 580px) {
+  .workflow-panel[data-workflow-panel="0"] { min-height: 590px; }
+  .workflow-flow-input { width: 100%; gap: 22px; }
+  .workflow-flow-input .waveform-node, .workflow-flow-input .spectrogram-node { width: 100%; min-height: 205px; }
+  .workflow-flow-input .waveform-node svg { height: 86px; }
+}
+
 /* Dolphin Team page */
 .team-home-page { background: #fff; }
 .team-home-page .site-header { position: absolute; display: grid; grid-template-columns: 1fr auto 1fr; }
