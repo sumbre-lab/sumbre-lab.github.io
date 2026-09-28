@@ -6,8 +6,8 @@ The website currently includes **OpenWhistle**, a large-scale longitudinal datas
 
 ## Pages
 
-- `team.html` — Dolphin Team, publications, and affiliations
-- `index.html` — OpenWhistle project page
+- `index.html` — Dolphin Team, publications, and affiliations
+- `openwhistle/index.html` — OpenWhistle project page
 
 ## Run locally
 
@@ -19,15 +19,16 @@ python -m http.server 8000
 
 Then open:
 
-- <http://localhost:8000/team.html> — Dolphin Team
-- <http://localhost:8000/> — OpenWhistle
+- <http://localhost:8000/> — Dolphin Team
+- <http://localhost:8000/openwhistle/> — OpenWhistle
 
 ## Project structure
 
 ```text
 .
-├── team.html
 ├── index.html
+├── openwhistle/
+│   └── index.html
 ├── styles.css
 ├── script.js
 └── assets/
