@@ -609,7 +609,7 @@ h2 em { color: #764ba2; font-family: Georgia, serif; font-weight: 400; }
 .workflow-flow-input .workflow-arrow { justify-self: center; align-self: center; }
 .workflow-flow-input .workflow-arrow::before { transform: rotate(45deg); }
 .workflow-flow-input .waveform-node svg { height: 122px; margin: 4px 0 0; }
-.workflow-flow-input .real-waveform path { fill: none; stroke: #1d1d1f; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+.workflow-flow-input .real-waveform path { fill: none; stroke: #1d1d1f; stroke-width: 1.05; stroke-linecap: round; }
 .workflow-flow-input .spectrogram-stack { width: 210px; height: 145px; }
 .workflow-flow-input .spectrogram-stack img { width: 108px; height: 108px; }
 @media (max-width: 580px) {
