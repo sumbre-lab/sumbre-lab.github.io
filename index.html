@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
+    <meta name="theme-color" content="#ffffff" />
+    <title>OpenWhistle</title>
+    <link rel="stylesheet" href="styles.css?v=147" />
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header">
+      <a class="brand" href="team.html" aria-label="Dolphin Team home">
+        <span class="brand-dolphin" aria-hidden="true">🐬</span>
+        <span>Dolphin Team</span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+      <nav id="site-nav" aria-label="Main navigation">
+        <a href="#dataset">Dataset</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#research">Research</a>
+        <a class="nav-cta" href="https://huggingface.co/OpenWhistleNeurIPS26" target="_blank" rel="noreferrer">Get the data <span>↗</span></a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <canvas id="heroWhistleCanvas" class="hero-lines" aria-hidden="true"></canvas>
+        <div class="hero-copy reveal">
+          <div class="hero-stage">
+          <h1><span class="paper-name">OpenWhistle</span></h1>
+          <p class="paper-title">A Large-Scale Longitudinal Dataset and Benchmark<br class="desktop-break" /> of Bottlenose Dolphin Vocalizations</p>
+          <p class="hero-deck">An open, longitudinal resource for learning the fine-grained structure of dolphin communication.</p>
+          <div class="whistle-network" aria-label="Dolphin whistle spectrograms flowing through a learned representation and converging into a continuous digital signal">
+            <svg viewBox="0 0 1000 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs>
+                <linearGradient id="stream-gradient" x1="0" x2="1">
+                  <stop offset="0" stop-color="#764ba2" />
+                  <stop offset=".55" stop-color="#0071e3" />
+                  <stop offset="1" stop-color="#e6f2ff" />
+                </linearGradient>
+                <linearGradient id="scan-gradient" x1="0" x2="1">
+                  <stop offset="0" stop-color="#dff9ff" stop-opacity="0" />
+                  <stop offset=".42" stop-color="#9ce9ff" stop-opacity=".16" />
+                  <stop offset=".5" stop-color="#ffffff" stop-opacity=".98" />
+                  <stop offset=".58" stop-color="#9ce9ff" stop-opacity=".16" />
+                  <stop offset="1" stop-color="#9ce9ff" stop-opacity="0" />
+                </linearGradient>
+                <filter id="soft-glow" x="-40%" y="-100%" width="180%" height="300%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <clipPath id="tile-a"><rect x="26" y="22" width="126" height="50" rx="7" /></clipPath>
+                <clipPath id="tile-b"><rect x="94" y="87" width="128" height="50" rx="7" /></clipPath>
+                <clipPath id="tile-c"><rect x="30" y="153" width="126" height="48" rx="7" /></clipPath>
+                <clipPath id="tile-d"><rect x="242" y="31" width="116" height="46" rx="7" /></clipPath>
+                <clipPath id="tile-e"><rect x="264" y="151" width="116" height="46" rx="7" /></clipPath>
+                <clipPath id="output-reveal-clip">
+                  <rect x="618" y="18" width="0" height="176">
+                    <animate attributeName="width" dur="8.2s" repeatCount="indefinite" calcMode="linear"
+                      keyTimes="0;.4;.74;.9;1" values="0;0;380;380;380" />
+                  </rect>
+                </clipPath>
+              </defs>
+
+              <rect width="1000" height="220" fill="transparent" />
+              <g class="network-streams">
+                <path pathLength="1" d="M152 47 C332 47 466 78 618 112" />
+                <path pathLength="1" d="M222 112 C340 104 500 120 618 112" />
+                <path pathLength="1" d="M156 177 C334 177 475 147 618 112" />
+                <path pathLength="1" d="M358 54 C456 54 537 86 618 112" />
+                <path pathLength="1" d="M380 174 C470 174 548 140 618 112" />
+              </g>
+              <g class="stream-energy">
+                <path pathLength="1" d="M152 47 C332 47 466 78 618 112" />
+                <path pathLength="1" d="M222 112 C340 104 500 120 618 112" />
+                <path pathLength="1" d="M156 177 C334 177 475 147 618 112" />
+                <path pathLength="1" d="M358 54 C456 54 537 86 618 112" />
+                <path pathLength="1" d="M380 174 C470 174 548 140 618 112" />
+              </g>
+              <g class="representation-particles">
+                <circle r="2.2"><animateMotion dur="8.2s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;.22;.47;1" path="M152 47 C332 47 466 78 618 112" /></circle>
+                <circle r="2.2"><animateMotion dur="8.2s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;.23;.48;1" path="M222 112 C340 104 500 120 618 112" /></circle>
+                <circle r="2.2"><animateMotion dur="8.2s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;.24;.49;1" path="M156 177 C334 177 475 147 618 112" /></circle>
+                <circle r="2.2"><animateMotion dur="8.2s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;.25;.48;1" path="M358 54 C456 54 537 86 618 112" /></circle>
+                <circle r="2.2"><animateMotion dur="8.2s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;.26;.49;1" path="M380 174 C470 174 548 140 618 112" /></circle>
+              </g>
+
+              <g class="signal-token token-a">
+                <image href="assets/images/whistles/nana.png" x="26" y="22" width="126" height="50" preserveAspectRatio="none" clip-path="url(#tile-a)" />
+                <rect class="spectro-scan" x="25" y="22" width="6" height="50" rx="2" clip-path="url(#tile-a)" />
+                <rect x="26" y="22" width="126" height="50" rx="7" />
+              </g>
+              <g class="signal-token token-b">
+                <image href="assets/images/whistles/nikita.png" x="94" y="87" width="128" height="50" preserveAspectRatio="none" clip-path="url(#tile-b)" />
+                <rect class="spectro-scan" x="93" y="87" width="6" height="50" rx="2" clip-path="url(#tile-b)" />
+                <rect x="94" y="87" width="128" height="50" rx="7" />
+              </g>
+              <g class="signal-token token-c">
+                <image href="assets/images/whistles/yosefa.png" x="30" y="153" width="126" height="48" preserveAspectRatio="none" clip-path="url(#tile-c)" />
+                <rect class="spectro-scan" x="29" y="153" width="6" height="48" rx="2" clip-path="url(#tile-c)" />
+                <rect x="30" y="153" width="126" height="48" rx="7" />
+              </g>
+              <g class="signal-token token-d">
+                <image href="assets/images/whistles/extra-1.png" x="242" y="31" width="116" height="46" preserveAspectRatio="none" clip-path="url(#tile-d)" />
+                <rect class="spectro-scan" x="241" y="31" width="6" height="46" rx="2" clip-path="url(#tile-d)" />
+                <rect x="242" y="31" width="116" height="46" rx="7" />
+              </g>
+              <g class="signal-token token-e">
+                <image href="assets/images/whistles/extra-2.png" x="264" y="151" width="116" height="46" preserveAspectRatio="none" clip-path="url(#tile-e)" />
+                <rect class="spectro-scan" x="263" y="151" width="6" height="46" rx="2" clip-path="url(#tile-e)" />
+                <rect x="264" y="151" width="116" height="46" rx="7" />
+              </g>
+
+              <g class="network-output">
+                <circle class="convergence-halo" cx="618" cy="112" r="7" />
+                <circle class="convergence-ring ring-a" cx="618" cy="112" r="8" />
+                <circle class="convergence-ring ring-b" cx="618" cy="112" r="8" />
+                <circle class="convergence-ring ring-c" cx="618" cy="112" r="8" />
+                <g class="output-drawn" clip-path="url(#output-reveal-clip)">
+                  <path class="output-underlay" d="M618 112 C660 112 690 110 725 98 C755 88 775 65 794 50 C812 35 827 42 836 69 C844 96 848 140 864 152 C880 164 895 134 906 100 C918 65 931 48 946 62 C960 78 968 118 979 107 C988 97 993 82 998 88"/>
+                  <path class="output-glow" d="M618 112 C660 112 690 110 725 98 C755 88 775 65 794 50 C812 35 827 42 836 69 C844 96 848 140 864 152 C880 164 895 134 906 100 C918 65 931 48 946 62 C960 78 968 118 979 107 C988 97 993 82 998 88"/>
+                  <path class="output-wave" d="M618 112 C660 112 690 110 725 98 C755 88 775 65 794 50 C812 35 827 42 836 69 C844 96 848 140 864 152 C880 164 895 134 906 100 C918 65 931 48 946 62 C960 78 968 118 979 107 C988 97 993 82 998 88"/>
+                </g>
+                <circle class="output-head" r="3.1">
+                  <animateMotion dur="8.2s" repeatCount="indefinite" calcMode="linear"
+                    keyPoints="0;0;.16764;.36562;.71006;1;1" keyTimes="0;.4;.485;.57;.655;.74;1"
+                    path="M618 112 C660 112 690 110 725 98 C755 88 775 65 794 50 C812 35 827 42 836 69 C844 96 848 140 864 152 C880 164 895 134 906 100 C918 65 931 48 946 62 C960 78 968 118 979 107 C988 97 993 82 998 88" />
+                </circle>
+                <path class="output-pulse" pathLength="1" d="M618 112 C660 112 690 110 725 98 C755 88 775 65 794 50 C812 35 827 42 836 69 C844 96 848 140 864 152 C880 164 895 134 906 100 C918 65 931 48 946 62 C960 78 968 118 979 107 C988 97 993 82 998 88">
+                </path>
+              </g>
+            </svg>
+            <div class="network-labels"><span>Whistle sequences</span><span>OpenWhistle representations</span><span>Acoustic structure</span></div>
+          </div>
+          <div class="hero-metrics" aria-label="Dataset statistics">
+            <div><strong>≈180K</strong><span>Whistles</span></div>
+            <div><strong>114h</strong><span>Audio</span></div>
+            <div><strong>5 yrs</strong><span>Longitudinal span</span></div>
+            <div><strong>8,354</strong><span>Expert labels</span></div>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="assets/papers/openwhistle-paper.pdf" target="_blank" rel="noreferrer"><svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg> Read paper</a>
+            <a class="button button-ghost" href="https://anonymous.4open.science/r/OpenWhistle-6771/" target="_blank" rel="noreferrer"><svg class="button-icon button-icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297C5.37.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297 24 5.67 18.627.297 12 .297Z"/></svg> View code</a>
+            <a class="button button-ghost" href="https://huggingface.co/OpenWhistleNeurIPS26" target="_blank" rel="noreferrer"><span class="button-emoji" aria-hidden="true">🤗</span> Explore data</a>
+            <span class="button button-ghost spotlight-action"><span class="spotlight-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1C13.4 7.6 16.4 10.6 23 12C16.4 13.4 13.4 16.4 12 23C10.6 16.4 7.6 13.4 1 12C7.6 10.6 10.6 7.6 12 1Z"/></svg></span> NeurIPS 2026 Spotlight</span>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="statement section-pad">
+        <p class="section-index">01 / THE GAP</p>
+        <h2 class="reveal">Bioacoustic datasets go <span>broad.</span><br />OpenWhistle goes <em>deep.</em></h2>
+        <div class="statement-grid reveal">
+          <p>Most animal-audio corpora cover many species with only a shallow sample of each. That is useful for species recognition, but not enough to study one communication system over time.</p>
+          <p>OpenWhistle follows a stable, known pod in a semi-natural marine environment—preserving the scale, continuity and acoustic messiness needed for new questions.</p>
+        </div>
+      </section>
+
+      <section class="numbers section-pad" id="dataset">
+        <div class="section-heading">
+          <p class="section-index">02 / THE DATASET</p>
+          <p class="section-kicker">One species.<br />Unprecedented depth.</p>
+        </div>
+        <div class="metrics-grid">
+          <article class="metric reveal"><span class="metric-no" data-count="180000">180,000</span><h3>whistles</h3><p>The largest publicly available dolphin-vocalization corpus to date.</p></article>
+          <article class="metric reveal"><span class="metric-no" data-count="114">114</span><h3>hours of audio</h3><p>Raw acoustic material suited to large-scale self-supervised pretraining.</p></article>
+          <article class="metric reveal"><span class="metric-no" data-count="5">5</span><h3>years</h3><p>Longitudinal recordings with contiguous sequences and changing social context.</p></article>
+          <article class="metric reveal"><span class="metric-no" data-count="8354">8,354</span><h3>expert labels</h3><p>Ten whistle types, manually reviewed for fine-grained evaluation.</p></article>
+        </div>
+        <figure class="feature-figure reveal">
+          <img src="assets/images/dataset/site-and-repertoire.webp" alt="Dolphin Reef recording site and representative signature and non-signature whistle spectrograms" />
+          <figcaption><span>Recording site & repertoire</span><p>Fixed hydrophones capture natural interactions at Dolphin Reef, Eilat. The repertoire pairs individually distinctive signature-whistle types with non-signature whistles.</p></figcaption>
+        </figure>
+      </section>
+
+      <section class="sound-gallery">
+        <div class="sound-intro section-pad reveal">
+          <p class="section-index">03 / THE REPERTOIRE</p>
+          <h2>Every contour<br />has a <em>character.</em></h2>
+          <p>Signature whistles are learned, individually distinctive calls. Their frequency contours remain recognizable through the real-world noise, overlap and variation preserved by OpenWhistle.</p>
+        </div>
+        <div class="whistle-cards" role="list">
+          <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="assets/images/whistles/nana.png" alt="Spectrogram of Nana's rising signature whistle" /></div><div><span>SW / 03</span><strong>Nana</strong><small>Signature whistle</small></div></article>
+          <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="assets/images/whistles/nikita.png" alt="Spectrogram of Nikita's signature whistle" /></div><div><span>SW / 04</span><strong>Nikita</strong><small>Signature whistle</small></div></article>
+          <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="assets/images/whistles/yosefa.png" alt="Spectrogram of Yosefa's signature whistle" /></div><div><span>SW / 05</span><strong>Yosefa</strong><small>Signature whistle</small></div></article>
+        </div>
+      </section>
+
+      <section class="pipeline section-pad" id="pipeline">
+        <div class="section-heading pipeline-heading">
+          <p class="section-index">04 / THE PIPELINE</p>
+          <h2>One pipeline.<br />Two datasets.</h2>
+        </div>
+
+        <div class="workflow reveal" data-workflow>
+          <div class="workflow-topbar">
+            <div><strong>OpenWhistle construction pipeline</strong><span>From continuous audio to two research-ready datasets</span></div>
+            <div class="workflow-controls" aria-label="Workflow controls">
+              <button type="button" data-workflow-action="play" aria-label="Play workflow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z" /></svg></button>
+              <button type="button" data-workflow-action="pause" aria-label="Pause workflow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg></button>
+              <button type="button" data-workflow-action="reset" aria-label="Restart workflow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M19 12a7 7 0 1 1-2-5" /></svg></button>
+            </div>
+          </div>
+
+          <div class="workflow-tabs" role="tablist" aria-label="OpenWhistle processing steps">
+            <button class="active" type="button" role="tab" aria-selected="true" data-workflow-step="0"><span>Step 1</span><strong>Raw audio</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="1"><span>Step 2</span><strong>CNN detection</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="2"><span>Step 3</span><strong>Segmentation</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="3"><span>Step 4</span><strong>F0 + ARTwarp</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="4"><span>Step 5</span><strong>Dataset outputs</strong></button>
+          </div>
+
+          <div class="workflow-stage" aria-live="polite">
+            <section class="workflow-panel active" data-workflow-panel="0" role="tabpanel">
+              <div class="workflow-panel-heading"><span>01 / INPUT PREPARATION</span><strong>Raw audio becomes model-ready spectrograms.</strong></div>
+              <div class="workflow-flow workflow-flow-input">
+                <article class="workflow-node waveform-node">
+                  <span>RAW AUDIO</span>
+                  <svg viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true"><path d="M0 46 C8 46 8 18 16 46 S24 74 32 46 S40 28 48 46 S56 65 64 46 S72 10 80 46 S88 82 96 46 S104 26 112 46 S120 61 128 46 S136 31 144 46 S152 72 160 46 S168 15 176 46 S184 77 192 46 S200 23 208 46 S216 64 224 46 S232 34 240 46 S248 69 256 46 S264 19 272 46 S280 75 288 46 S296 30 304 46 S312 57 320 46" /></svg>
+                  <small>96 kHz underwater recordings</small>
+                </article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="workflow-node spectrogram-node">
+                  <span>0.4 S WINDOWS</span>
+                  <div class="spectrogram-stack"><img src="assets/images/pipeline/window-01.png" alt="" /><img src="assets/images/pipeline/window-02.png" alt="" /><img src="assets/images/pipeline/window-03.png" alt="" /></div>
+                  <small>Log-power · 2–22 kHz</small>
+                </article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="workflow-node compact-node"><strong>224 × 224</strong><small>normalized spectrograms</small></article>
+              </div>
+            </section>
+
+            <section class="workflow-panel" data-workflow-panel="1" role="tabpanel" hidden>
+              <div class="workflow-panel-heading"><span>02 / BINARY DETECTION</span><strong>A CNN separates whistle-bearing windows from noise.</strong></div>
+              <div class="workflow-flow detector-flow">
+                <article class="workflow-node detector-sample"><span>INPUT WINDOW</span><img src="assets/images/pipeline/window-01.png" alt="Actual 224 by 224 whistle spectrogram from the paper" /><small>224 × 224 input</small></article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="model-node">
+                  <span>CNN DETECTOR</span>
+                  <img class="vgg16-figure" src="assets/images/pipeline/vgg16.png" alt="VGG16 backbone and fully connected classification head from the paper" />
+                  <b>ImageNet backbone · FC 50 → 20 → 2</b>
+                </article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="detector-results"><span>WHISTLE / NOISE</span><div><strong>96.52%</strong><small>precision</small></div><div><strong>97.99%</strong><small>recall</small></div></article>
+              </div>
+            </section>
+
+            <section class="workflow-panel" data-workflow-panel="2" role="tabpanel" hidden>
+              <div class="workflow-panel-heading"><span>03 / SEGMENTATION</span><strong>Positive windows are joined into contiguous whistle sequences.</strong></div>
+              <div class="segmentation-demo">
+                <figure class="segmentation-paper">
+                  <img src="assets/images/pipeline/segmentation.png" alt="Actual segmentation example from the OpenWhistle paper showing positive 0.4 second windows merged into a whistle segment" />
+                  <figcaption><span>POSITIVE DETECTIONS</span><strong>Grouped with a maximum 6 s gap</strong><small>33,267 retained sequences · 2–20 s</small></figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section class="workflow-panel" data-workflow-panel="3" role="tabpanel" hidden>
+              <div class="workflow-panel-heading"><span>04 / EXPERT BRANCH</span><strong>Contours are estimated, clustered, then manually reviewed.</strong></div>
+              <div class="workflow-flow annotation-flow">
+                <article class="workflow-node contour-node"><span>F0 ESTIMATION</span><img src="assets/images/pipeline/f0-03.png" alt="Actual F0 contour estimation example from the OpenWhistle paper" /><small>Dolphin CREPE · every 5 ms</small></article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="artwarp-node"><span>CONTOUR CLUSTERING</span><img class="artwarp-figure" src="assets/images/pipeline/artwarp.png" alt="ARTwarp network shown in the OpenWhistle paper" /><strong>ARTwarp</strong><small>DTW · vigilance 90</small></article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="expert-node"><span>EXPERT REVIEW</span><div class="expert-stack paper-expert-stack"><img src="assets/images/pipeline/expert-yosefa.png" alt="Expert-annotated Yosefa whistle" /><img src="assets/images/pipeline/expert-neo.png" alt="Expert-annotated Neo whistle" /><img src="assets/images/pipeline/expert-nana.png" alt="Expert-annotated Nana whistle" /></div><strong>10 validated types</strong><small>7 signature · 3 non-signature</small></article>
+              </div>
+            </section>
+
+            <section class="workflow-panel" data-workflow-panel="4" role="tabpanel" hidden>
+              <div class="workflow-panel-heading"><span>05 / OUTPUTS</span><strong>One detection pipeline supports two complementary datasets.</strong></div>
+              <div class="output-branch">
+                <div class="branch-source"><span>POSITIVE DETECTIONS</span><strong>shared source</strong></div>
+                <div class="branch-lines" aria-hidden="true"><i></i><i></i></div>
+                <article><span>PRETRAINING CORPUS</span><strong>≈180K</strong><b>estimated whistles</b><small>114.3 h · 33,267 sequences</small></article>
+                <article><span>EXPERT-ANNOTATED SET</span><strong>8,354</strong><b>reviewed whistles</b><small>10 whistle types · 1.9 h</small></article>
+              </div>
+            </section>
+          </div>
+
+          <div class="workflow-footer"><span><i></i> Original Figure 6 assets · parameters from Appendix B</span><strong data-workflow-status>Step 1 of 5</strong></div>
+        </div>
+      </section>
+
+      <section class="benchmark section-pad" id="benchmark">
+        <div class="section-heading light">
+          <p class="section-index">05 / THE BENCHMARK</p>
+          <h2>In-domain listening<br />makes the difference.</h2>
+          <p>Frozen representations are tested with the same linear probe. The original benchmark shows that a Wav2Vec2.0 encoder trained from scratch on OpenWhistle captures fine-grained structure better than general bioacoustic models.</p>
+        </div>
+        <div class="benchmark-panel reveal">
+          <div class="benchmark-tabs" role="tablist" aria-label="Benchmark metric">
+            <button class="active" role="tab" aria-selected="true" data-metric="classification">Classification <small>accuracy %</small></button>
+            <button role="tab" aria-selected="false" data-metric="detection">Detection <small>mAP %</small></button>
+          </div>
+          <div class="chart" aria-live="polite">
+            <div class="bar-row"><span>Spectral features</span><div class="bar-track"><div class="bar-fill" style="--width:34.9%"></div></div><span class="bar-value">34.9</span></div>
+            <div class="bar-row"><span>MFCCs</span><div class="bar-track"><div class="bar-fill" style="--width:45.6%"></div></div><span class="bar-value">45.6</span></div>
+            <div class="bar-row"><span>Mean spectrogram</span><div class="bar-track"><div class="bar-fill" style="--width:55.6%"></div></div><span class="bar-value">55.6</span></div>
+            <div class="bar-row"><span>AVES-core</span><div class="bar-track"><div class="bar-fill" style="--width:68%"></div></div><span class="bar-value">68.0</span></div>
+            <div class="bar-row"><span>BioLingual</span><div class="bar-track"><div class="bar-fill" style="--width:71.3%"></div></div><span class="bar-value">71.3</span></div>
+            <div class="bar-row"><span>AVES-bio</span><div class="bar-track"><div class="bar-fill" style="--width:75.1%"></div></div><span class="bar-value">75.1</span></div>
+            <div class="bar-row highlight"><span>Wav2Vec2.0 · OW</span><div class="bar-track"><div class="bar-fill" style="--width:81.1%"></div></div><span class="bar-value">81.1</span></div>
+          </div>
+          <p class="chart-note">Original six-class balanced benchmark · mean over bootstrap resampling. Higher is better.</p>
+        </div>
+        <div class="benchmark-summary-grid">
+          <article class="reveal"><span>REVISED / 10 CLASSES</span><strong>64.37</strong><small>macro-F1</small><p>Wav2Vec2.0 remains best on the full, naturally imbalanced expert set.</p></article>
+          <article class="reveal"><span>IN-DOMAIN EFFECT</span><strong>+9.17</strong><small>F1 points</small><p>Best gain from OpenWhistle pretraining within the AVES-bio architecture.</p></article>
+          <article class="reveal"><span>DATA STILL HELPS</span><strong>+7.84</strong><small>F1 points</small><p>Gain from using 100% instead of 50% of the pretraining corpus.</p></article>
+        </div>
+      </section>
+
+      <section class="research section-pad" id="research">
+        <p class="section-index">06 / WHAT COMES NEXT</p>
+        <h2 class="reveal">A benchmark today.<br /><em>A research substrate tomorrow.</em></h2>
+        <div class="research-grid">
+          <article class="reveal"><span>01</span><h3>Vocal development</h3><p>Trace how a learned repertoire evolves across years and life events.</p></article>
+          <article class="reveal"><span>02</span><h3>Social dynamics</h3><p>Model exchanges, turn-taking and interactions inside contiguous sequences.</p></article>
+          <article class="reveal"><span>03</span><h3>Label efficiency</h3><p>Explore few-shot, active and semi-supervised learning where expert time is scarce.</p></article>
+          <article class="reveal"><span>04</span><h3>Temporal shift</h3><p>Measure robustness as pod composition and acoustic conditions change.</p></article>
+        </div>
+      </section>
+
+
+      <section class="team section-pad">
+        <p class="section-index">07 / TEAM</p>
+        <h2>Built across disciplines.</h2>
+        <p class="authors"><a href="https://fmustun.github.io/" target="_blank" rel="noreferrer">Faadil Mustun</a><sup>1</sup> · <a href="https://chiarasemenzin.github.io/" target="_blank" rel="noreferrer">Chiara Semenzin</a><sup>1,2</sup> · <a href="https://robertodessi.github.io/" target="_blank" rel="noreferrer">Roberto Dessì</a><sup>3</sup> · <a href="https://veridisyndrome.github.io/" target="_blank" rel="noreferrer">Pablo Robin Guerrero</a><sup>1</sup><br class="authors-row-break" /><a href="https://pierreorhan.github.io/" target="_blank" rel="noreferrer">Pierre Orhan</a><sup>4</sup> · Alexis Emanuelli<sup>1</sup> · <a href="https://emanuelerossi.co.uk/" target="_blank" rel="noreferrer">Emanuele Rossi</a><sup>5</sup><br class="authors-row-break" /><a href="https://yairlak.github.io/" target="_blank" rel="noreferrer">Yair Lakretz</a><sup>6</sup> · <a href="https://www.polaviejalab.org/" target="_blank" rel="noreferrer">Gonzalo de Polavieja</a><sup>7</sup> · <a href="https://www.zebrain.biologie.ens.fr/" target="_blank" rel="noreferrer">Germán Sumbre</a><sup>1</sup></p>
+        <p class="team-note team-affiliations"><sup>1</sup> Institut de Biologie de l’ENS (IBENS), Département de biologie, École normale supérieure, CNRS, INSERM, Université PSL, Paris, France · <sup>2</sup> Earth Species Project · <sup>3</sup> Not Diamond, San Francisco, USA · <sup>4</sup> Institut du Cerveau, Paris, France · <sup>5</sup> Sapienza University of Rome, Rome, Italy · <sup>6</sup> École Normale Supérieure, Paris, France · <sup>7</sup> Champalimaud Foundation, Lisbon, Portugal</p>
+      </section>
+
+
+      <section class="citation section-pad" id="citation">
+        <p class="section-index">CITATION</p>
+        <h2>Cite our work.</h2>
+        <p class="citation-lead">If you use OpenWhistle in your research, please cite our paper.</p>
+        <div class="citation-card">
+        <div class="citation-toolbar">
+          <strong><span aria-hidden="true">“</span> BibTeX</strong>
+          <button class="citation-copy" type="button" aria-label="Copy BibTeX citation">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="10" height="10" rx="1.5"></rect><path d="M15 8V6.5A1.5 1.5 0 0 0 13.5 5h-7A1.5 1.5 0 0 0 5 6.5v7A1.5 1.5 0 0 0 6.5 15H8"></path></svg>
+            <span aria-live="polite">Copy BibTeX</span>
+          </button>
+        </div>
+        <pre><code class="citation-code">@inproceedings{mustun2026openwhistle,
+  title={OpenWhistle: A Large-Scale Longitudinal Dataset and Benchmark of Bottlenose Dolphin Vocalizations},
+  author={Mustun, Faadil and Semenzin, Chiara and Dessì, Roberto and Robin Guerrero, Pablo and Orhan, Pierre and Emanuelli, Alexis and Rossi, Emanuele and Lakretz, Yair and de Polavieja, Gonzalo G. and Sumbre, Germán},
+  booktitle={Advances in Neural Information Processing Systems},
+  year={2026},
+  note={Spotlight}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer compact-footer">
+      <div class="footer-inner">
+        <p class="footer-credit">© 2026 Dolphin Team · Sumbre Lab · IBENS, École normale supérieure, Paris.</p>
+      </div>
+    </footer>
+
+
+    <script src="script.js?v=19"></script>
+  </body>
+</html>
