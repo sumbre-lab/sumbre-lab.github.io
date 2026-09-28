@@ -75,7 +75,7 @@ if (workflow) {
   const startTimer = () => {
     stopTimer();
     if (!wantsPlayback || !workflowVisible || reducedMotion) return;
-    timer = window.setInterval(() => showStep(activeStep + 1), 3200);
+    timer = window.setInterval(() => showStep(activeStep + 1), 4800);
     updateControls();
   };
 
