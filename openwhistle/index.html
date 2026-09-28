@@ -6,7 +6,7 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=154" />
+    <link rel="stylesheet" href="../styles.css?v=153" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
@@ -199,9 +199,9 @@
           <h2>One pipeline.<br />Two datasets.</h2>
         </div>
 
-        <div class="workflow workflow-refined reveal" data-workflow>
+        <div class="workflow reveal" data-workflow>
           <div class="workflow-topbar">
-            <div><strong>How OpenWhistle is built</strong><span>Follow the data from continuous recordings to the two released datasets.</span></div>
+            <div><strong>OpenWhistle construction pipeline</strong><span>From continuous audio to two research-ready datasets</span></div>
             <div class="workflow-controls" aria-label="Workflow controls">
               <button type="button" data-workflow-action="play" aria-label="Play workflow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z" /></svg></button>
               <button type="button" data-workflow-action="pause" aria-label="Pause workflow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg></button>
@@ -210,51 +210,81 @@
           </div>
 
           <div class="workflow-tabs" role="tablist" aria-label="OpenWhistle processing steps">
-            <button class="active" type="button" role="tab" aria-selected="true" data-workflow-step="0"><span>01</span><strong>Listen</strong></button>
-            <button type="button" role="tab" aria-selected="false" data-workflow-step="1"><span>02</span><strong>Detect</strong></button>
-            <button type="button" role="tab" aria-selected="false" data-workflow-step="2"><span>03</span><strong>Segment</strong></button>
-            <button type="button" role="tab" aria-selected="false" data-workflow-step="3"><span>04</span><strong>Identify</strong></button>
-            <button type="button" role="tab" aria-selected="false" data-workflow-step="4"><span>05</span><strong>Release</strong></button>
+            <button class="active" type="button" role="tab" aria-selected="true" data-workflow-step="0"><span>Step 1</span><strong>Raw audio</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="1"><span>Step 2</span><strong>CNN detection</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="2"><span>Step 3</span><strong>Segmentation</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="3"><span>Step 4</span><strong>F0 + ARTwarp</strong></button>
+            <button type="button" role="tab" aria-selected="false" data-workflow-step="4"><span>Step 5</span><strong>Dataset outputs</strong></button>
           </div>
 
           <div class="workflow-stage" aria-live="polite">
             <section class="workflow-panel active" data-workflow-panel="0" role="tabpanel">
-              <div class="pipeline-slide">
-                <div class="pipeline-copy"><span class="pipeline-eyebrow">SOURCE AUDIO</span><h3>Listen to the full soundscape.</h3><p>Continuous underwater recordings are divided into short, normalized views of the frequency range where whistles occur.</p><dl><div><dt>96 kHz</dt><dd>recording rate</dd></div><div><dt>0.4 s</dt><dd>analysis window</dd></div><div><dt>2–22 kHz</dt><dd>frequency band</dd></div></dl></div>
-                <div class="pipeline-figure audio-figure"><svg viewBox="0 0 620 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C12 60 12 30 24 60 S36 90 48 60 S60 42 72 60 S84 80 96 60 S108 22 120 60 S132 98 144 60 S156 38 168 60 S180 78 192 60 S204 44 216 60 S228 88 240 60 S252 27 264 60 S276 93 288 60 S300 35 312 60 S324 82 336 60 S348 47 360 60 S372 85 384 60 S396 31 408 60 S420 90 432 60 S444 41 456 60 S468 76 480 60 S492 25 504 60 S516 95 528 60 S540 39 552 60 S564 79 576 60 S588 45 600 60 S612 70 620 60" /></svg><div class="window-strip"><img src="../assets/images/pipeline/window-01.png" alt="Whistle spectrogram window" /><img src="../assets/images/pipeline/window-02.png" alt="Whistle spectrogram window" /><img src="../assets/images/pipeline/window-03.png" alt="Whistle spectrogram window" /></div><small>RAW AUDIO → LOG-POWER SPECTROGRAMS</small></div>
+              <div class="workflow-panel-heading"><span>01 / INPUT PREPARATION</span><strong>Raw audio becomes model-ready spectrograms.</strong></div>
+              <div class="workflow-flow workflow-flow-input">
+                <article class="workflow-node waveform-node">
+                  <span>RAW AUDIO</span>
+                  <svg viewBox="0 0 320 92" preserveAspectRatio="none" aria-hidden="true"><path d="M0 46 C8 46 8 18 16 46 S24 74 32 46 S40 28 48 46 S56 65 64 46 S72 10 80 46 S88 82 96 46 S104 26 112 46 S120 61 128 46 S136 31 144 46 S152 72 160 46 S168 15 176 46 S184 77 192 46 S200 23 208 46 S216 64 224 46 S232 34 240 46 S248 69 256 46 S264 19 272 46 S280 75 288 46 S296 30 304 46 S312 57 320 46" /></svg>
+                  <small>96 kHz underwater recordings</small>
+                </article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="workflow-node spectrogram-node">
+                  <span>0.4 S WINDOWS</span>
+                  <div class="spectrogram-stack"><img src="../assets/images/pipeline/window-01.png" alt="" /><img src="../assets/images/pipeline/window-02.png" alt="" /><img src="../assets/images/pipeline/window-03.png" alt="" /></div>
+                  <small>Log-power · 2–22 kHz</small>
+                </article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="workflow-node compact-node"><strong>224 × 224</strong><small>normalized spectrograms</small></article>
               </div>
             </section>
 
             <section class="workflow-panel" data-workflow-panel="1" role="tabpanel" hidden>
-              <div class="pipeline-slide">
-                <div class="pipeline-copy"><span class="pipeline-eyebrow">BINARY DETECTION</span><h3>Find windows that contain a whistle.</h3><p>A VGG16-based classifier separates whistle-bearing windows from background noise before either dataset branch is built.</p><dl><div><dt>224²</dt><dd>model input</dd></div><div><dt>96.52%</dt><dd>precision</dd></div><div><dt>97.99%</dt><dd>recall</dd></div></dl></div>
-                <figure class="pipeline-figure detector-figure"><img src="../assets/images/pipeline/vgg16.png" alt="VGG16 backbone and fully connected binary classification head" /><figcaption><span>VGG16 backbone</span><span>FC 50 → 20 → 2</span></figcaption></figure>
+              <div class="workflow-panel-heading"><span>02 / BINARY DETECTION</span><strong>A CNN separates whistle-bearing windows from noise.</strong></div>
+              <div class="workflow-flow detector-flow">
+                <article class="workflow-node detector-sample"><span>INPUT WINDOW</span><img src="../assets/images/pipeline/window-01.png" alt="Actual 224 by 224 whistle spectrogram from the paper" /><small>224 × 224 input</small></article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="model-node">
+                  <span>CNN DETECTOR</span>
+                  <img class="vgg16-figure" src="../assets/images/pipeline/vgg16.png" alt="VGG16 backbone and fully connected classification head from the paper" />
+                  <b>ImageNet backbone · FC 50 → 20 → 2</b>
+                </article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="detector-results"><span>WHISTLE / NOISE</span><div><strong>96.52%</strong><small>precision</small></div><div><strong>97.99%</strong><small>recall</small></div></article>
               </div>
             </section>
 
             <section class="workflow-panel" data-workflow-panel="2" role="tabpanel" hidden>
-              <div class="pipeline-slide">
-                <div class="pipeline-copy"><span class="pipeline-eyebrow">PRETRAINING BRANCH</span><h3>Join detections into natural sequences.</h3><p>Neighbouring positive windows are merged, retaining the longer acoustic context used for self-supervised pretraining.</p><dl><div><dt>≤ 6 s</dt><dd>maximum gap</dd></div><div><dt>2–20 s</dt><dd>sequence length</dd></div><div><dt>33,267</dt><dd>sequences</dd></div></dl></div>
-                <figure class="pipeline-figure segmentation-figure"><img src="../assets/images/pipeline/segmentation.png" alt="Positive spectrogram windows merged into a contiguous whistle sequence" /><figcaption>Positive windows become one temporally contiguous sequence.</figcaption></figure>
+              <div class="workflow-panel-heading"><span>03 / SEGMENTATION</span><strong>Positive windows are joined into contiguous whistle sequences.</strong></div>
+              <div class="segmentation-demo">
+                <figure class="segmentation-paper">
+                  <img src="../assets/images/pipeline/segmentation.png" alt="Actual segmentation example from the OpenWhistle paper showing positive 0.4 second windows merged into a whistle segment" />
+                  <figcaption><span>POSITIVE DETECTIONS</span><strong>Grouped with a maximum 6 s gap</strong><small>33,267 retained sequences · 2–20 s</small></figcaption>
+                </figure>
               </div>
             </section>
 
             <section class="workflow-panel" data-workflow-panel="3" role="tabpanel" hidden>
-              <div class="pipeline-slide">
-                <div class="pipeline-copy"><span class="pipeline-eyebrow">ANNOTATION BRANCH</span><h3>Turn contours into expert labels.</h3><p>Fundamental-frequency contours are estimated, grouped by ARTwarp, and then reviewed by domain experts.</p><dl><div><dt>5 ms</dt><dd>F0 sampling</dd></div><div><dt>90</dt><dd>vigilance</dd></div><div><dt>10</dt><dd>validated types</dd></div></dl></div>
-                <div class="pipeline-figure identify-figure"><figure><img src="../assets/images/pipeline/f0-03.png" alt="Estimated whistle frequency contour" /><figcaption>Estimate F0</figcaption></figure><span aria-hidden="true">→</span><figure><img src="../assets/images/pipeline/artwarp.png" alt="ARTwarp contour clustering network" /><figcaption>Cluster</figcaption></figure><span aria-hidden="true">→</span><figure class="review-stack"><div><img src="../assets/images/pipeline/expert-yosefa.png" alt="Expert-reviewed Yosefa whistle" /><img src="../assets/images/pipeline/expert-neo.png" alt="Expert-reviewed Neo whistle" /><img src="../assets/images/pipeline/expert-nana.png" alt="Expert-reviewed Nana whistle" /></div><figcaption>Expert review</figcaption></figure></div>
+              <div class="workflow-panel-heading"><span>04 / EXPERT BRANCH</span><strong>Contours are estimated, clustered, then manually reviewed.</strong></div>
+              <div class="workflow-flow annotation-flow">
+                <article class="workflow-node contour-node"><span>F0 ESTIMATION</span><img src="../assets/images/pipeline/f0-03.png" alt="Actual F0 contour estimation example from the OpenWhistle paper" /><small>Dolphin CREPE · every 5 ms</small></article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="artwarp-node"><span>CONTOUR CLUSTERING</span><img class="artwarp-figure" src="../assets/images/pipeline/artwarp.png" alt="ARTwarp network shown in the OpenWhistle paper" /><strong>ARTwarp</strong><small>DTW · vigilance 90</small></article>
+                <span class="workflow-arrow" aria-hidden="true">→</span>
+                <article class="expert-node"><span>EXPERT REVIEW</span><div class="expert-stack paper-expert-stack"><img src="../assets/images/pipeline/expert-yosefa.png" alt="Expert-annotated Yosefa whistle" /><img src="../assets/images/pipeline/expert-neo.png" alt="Expert-annotated Neo whistle" /><img src="../assets/images/pipeline/expert-nana.png" alt="Expert-annotated Nana whistle" /></div><strong>10 validated types</strong><small>7 signature · 3 non-signature</small></article>
               </div>
             </section>
 
             <section class="workflow-panel" data-workflow-panel="4" role="tabpanel" hidden>
-              <div class="pipeline-slide output-slide">
-                <div class="pipeline-copy"><span class="pipeline-eyebrow">DATASET OUTPUTS</span><h3>Two datasets, built for different questions.</h3><p>The shared detector feeds a large corpus for representation learning and a smaller expert-reviewed corpus for supervised research.</p></div>
-                <div class="pipeline-figure release-figure"><article><span>PRETRAINING</span><strong>≈180K</strong><b>estimated whistles</b><small>114.3 h · 33,267 sequences</small></article><article><span>EXPERT-ANNOTATED</span><strong>8,354</strong><b>reviewed whistles</b><small>10 types · 1.9 h</small></article></div>
+              <div class="workflow-panel-heading"><span>05 / OUTPUTS</span><strong>One detection pipeline supports two complementary datasets.</strong></div>
+              <div class="output-branch">
+                <div class="branch-source"><span>POSITIVE DETECTIONS</span><strong>shared source</strong></div>
+                <div class="branch-lines" aria-hidden="true"><i></i><i></i></div>
+                <article><span>PRETRAINING CORPUS</span><strong>≈180K</strong><b>estimated whistles</b><small>114.3 h · 33,267 sequences</small></article>
+                <article><span>EXPERT-ANNOTATED SET</span><strong>8,354</strong><b>reviewed whistles</b><small>10 whistle types · 1.9 h</small></article>
               </div>
             </section>
           </div>
 
-          <div class="workflow-footer"><span>Methods and parameters follow the OpenWhistle paper.</span><strong data-workflow-status>Step 1 of 5</strong></div>
+          <div class="workflow-footer"><span><i></i> Original Figure 6 assets · parameters from Appendix B</span><strong data-workflow-status>Step 1 of 5</strong></div>
         </div>
       </section>
 
@@ -337,6 +367,6 @@
     </footer>
 
 
-    <script src="../script.js?v=20"></script>
+    <script src="../script.js?v=19"></script>
   </body>
 </html>
