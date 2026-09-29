@@ -6,7 +6,7 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=170" />
+    <link rel="stylesheet" href="../styles.css?v=171" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
@@ -223,6 +223,10 @@
 
           <section class="benchmark-result-panel active" id="result-panel-foundation" role="tabpanel" aria-labelledby="result-tab-foundation" data-result-panel="foundation">
             <header><div><span>01 / TRANSFER</span><h3>Frozen representations</h3></div><p>General bioacoustic encoders versus a model pretrained directly on OpenWhistle.</p></header>
+            <div class="benchmark-performance-summary">
+              <p>OpenWhistle performance summary</p>
+              <div><article><strong>64.37</strong><span>Full-set macro-F1</span></article><article><strong>+11.68</strong><span>vs best general backbone</span></article></div>
+            </div>
             <div class="results-table-scroll">
               <table class="results-table">
                 <thead><tr><th scope="col">Backbone</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
@@ -238,6 +242,10 @@
 
           <section class="benchmark-result-panel" id="result-panel-continued" role="tabpanel" aria-labelledby="result-tab-continued" data-result-panel="continued" hidden>
             <header><div><span>02 / ADAPTATION</span><h3>Continued pretraining</h3></div><p>AVES-Bio adapted to 10%, 50% or 100% of the OpenWhistle pretraining corpus.</p></header>
+            <div class="benchmark-performance-summary">
+              <p>Best continued-pretraining result</p>
+              <div><article><strong>63.53</strong><span>Full-set macro-F1</span></article><article><strong>+10.84</strong><span>vs off-the-shelf AVES-Bio</span></article></div>
+            </div>
             <div class="results-table-scroll">
               <table class="results-table">
                 <thead><tr><th scope="col">Checkpoint</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
@@ -255,6 +263,10 @@
 
           <section class="benchmark-result-panel" id="result-panel-scratch" role="tabpanel" aria-labelledby="result-tab-scratch" data-result-panel="scratch" hidden>
             <header><div><span>03 / SCALE</span><h3>Pretraining from scratch</h3></div><p>Wav2Vec2.0 trained only on increasing shares of the OpenWhistle corpus.</p></header>
+            <div class="benchmark-performance-summary">
+              <p>Data-scale summary</p>
+              <div><article><strong>80.80</strong><span>Detection mAP</span></article><article><strong>+7.84</strong><span>Full-set F1 vs 50% data</span></article></div>
+            </div>
             <div class="results-table-scroll">
               <table class="results-table">
                 <thead><tr><th scope="col">Checkpoint</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
@@ -270,6 +282,10 @@
 
           <section class="benchmark-result-panel" id="result-panel-finetuning" role="tabpanel" aria-labelledby="result-tab-finetuning" data-result-panel="finetuning" hidden>
             <header><div><span>04 / END TO END</span><h3>Full fine-tuning</h3></div><p>The encoder and prediction head are optimized jointly instead of using frozen representations.</p></header>
+            <div class="benchmark-performance-summary">
+              <p>Best end-to-end result</p>
+              <div><article><strong>79.60</strong><span>Balanced macro-F1</span></article><article><strong>77.02</strong><span>Detection mAP</span></article></div>
+            </div>
             <div class="results-table-scroll">
               <table class="results-table">
                 <thead><tr><th scope="col">Backbone</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
