@@ -219,15 +219,20 @@
             </article>
             <span class="pipeline-link pipeline-link-two" aria-hidden="true"><i></i></span>
             <article class="pipeline-map-node detector-map-node">
-              <div class="map-node-label"><span>03</span><strong>CNN detector</strong></div>
-              <div class="detector-mark"><b>VGG16</b><span>whistle</span><span>noise</span></div>
-              <small>Binary classification</small>
+              <div class="map-node-label"><span>03</span><strong>VGG16 detector</strong></div>
+              <div class="cnn-diagram" aria-label="Spectrogram processed by a VGG16 convolutional backbone and binary classification head">
+                <img src="../assets/images/pipeline/window-01.png" alt="Whistle spectrogram input" />
+                <div class="cnn-layers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                <div class="cnn-head"><b>CNN</b><span>whistle / noise</span></div>
+              </div>
+              <small>ImageNet backbone &middot; FC 50 &rarr; 20 &rarr; 2</small>
             </article>
           </div>
 
           <div class="pipeline-split" aria-hidden="true"><span>POSITIVE DETECTIONS</span><i></i></div>
 
           <div class="pipeline-branches">
+            <span class="branch-route" aria-hidden="true"><i></i><i></i></span>
             <article class="pipeline-branch pretraining-branch">
               <header><span>PATH A</span><h3>Pretraining corpus</h3></header>
               <figure><img src="../assets/images/pipeline/segmentation.png" alt="Positive detections joined into a contiguous whistle sequence" /><figcaption>Neighbouring detections become 2&ndash;20 s sequences.</figcaption></figure>
