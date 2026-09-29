@@ -1,3 +1,40 @@
+const whistleCarousel = document.querySelector("[data-whistle-carousel]");
+if (whistleCarousel) {
+  const track = whistleCarousel.querySelector(".whistle-cards");
+  const buttons = [...whistleCarousel.querySelectorAll("[data-whistle-scroll]")];
+  const cards = [...track.querySelectorAll(".whistle-card")];
+  const status = whistleCarousel.querySelector("[data-whistle-status]");
+
+  const updateWhistleControls = () => {
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    buttons.forEach(button => {
+      const direction = Number(button.dataset.whistleScroll);
+      button.disabled = direction < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= maxScroll - 2;
+    });
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const stride = cards[0] ? cards[0].getBoundingClientRect().width + gap : track.clientWidth;
+    const activeCard = Math.min(cards.length - 1, Math.max(0, Math.round(track.scrollLeft / stride)));
+    const visibleCards = Math.max(1, Math.floor((track.clientWidth + gap) / stride));
+    const firstVisible = String(activeCard + 1).padStart(2, "0");
+    const lastVisible = String(Math.min(cards.length, activeCard + visibleCards)).padStart(2, "0");
+    const totalCards = String(cards.length).padStart(2, "0");
+    status.textContent = visibleCards > 1 ? firstVisible + "–" + lastVisible + " / " + totalCards : firstVisible + " / " + totalCards;
+  };
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const firstCard = cards[0];
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      const distance = firstCard ? firstCard.getBoundingClientRect().width + gap : track.clientWidth * .8;
+      track.scrollBy({ left: distance * Number(button.dataset.whistleScroll), behavior: "smooth" });
+    });
+  });
+
+  track.addEventListener("scroll", updateWhistleControls, { passive: true });
+  new ResizeObserver(updateWhistleControls).observe(track);
+  updateWhistleControls();
+}
+
 const benchmarkResults = document.querySelector("[data-benchmark-results]");
 if (benchmarkResults) {
   const resultTabs = [...benchmarkResults.querySelectorAll("[data-result-tab]")];

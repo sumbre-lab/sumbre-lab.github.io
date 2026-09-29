@@ -6,7 +6,9 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=177" />
+    <link rel="icon" href="../assets/icons/favicon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="shortcut icon" href="../assets/icons/favicon.ico?v=2" />
+    <link rel="stylesheet" href="../styles.css?v=185" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
@@ -172,9 +174,19 @@
           <article class="metric reveal"><span class="metric-no" data-count="5">5</span><h3>years</h3><p>Longitudinal recordings with contiguous sequences and changing social context.</p></article>
           <article class="metric reveal"><span class="metric-no" data-count="8354">8,354</span><h3>expert labels</h3><p>Whistles labeled by experts within their original sequence context.</p></article>
         </div>
-        <figure class="feature-figure reveal">
-          <img src="../assets/images/dataset/site-and-repertoire.webp" alt="Dolphin Reef recording site and representative signature and non-signature whistle spectrograms" />
-          <figcaption><span>Recording site & repertoire</span><p>Fixed hydrophones capture natural interactions at Dolphin Reef, Eilat. The repertoire pairs individually distinctive signature-whistle types with non-signature whistles.</p></figcaption>
+        <figure class="field-story reveal">
+          <div class="field-media">
+            <div class="field-photos">
+              <img src="../assets/images/dataset/dolphin-reef-aerial.webp" alt="Aerial view of Dolphin Reef showing the fixed hydrophone positions" />
+              <img src="../assets/images/dataset/dolphin-reef-lagoon.webp" alt="Dolphin Reef lagoon with hydrophone positions and a dolphin visible underwater" />
+            </div>
+            <div class="field-video">
+              <video autoplay muted loop playsinline preload="metadata" poster="../assets/videos/dolphins-at-dolphin-reef-poster.webp" aria-label="Dolphins swimming together at Dolphin Reef">
+                <source src="../assets/videos/dolphins-at-dolphin-reef.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+          <figcaption><span>Recording site</span><p>Fixed hydrophones follow the pod continuously in its everyday environment at Dolphin Reef, Eilat.</p></figcaption>
         </figure>
       </section>
 
@@ -182,14 +194,32 @@
         <div class="sound-intro section-pad reveal">
           <p class="section-index">03 / THE REPERTOIRE</p>
           <h2>Every contour<br />has a <em>character.</em></h2>
-          <p>Signature whistles are learned, individually distinctive calls. Their frequency contours remain recognizable through the real-world noise, overlap and variation preserved by OpenWhistle.</p>
+          <p>Seven individually distinctive signature-whistle types and three non-signature types form the expert-labeled repertoire. Their contours remain recognizable through the noise, overlap and variation preserved by OpenWhistle.</p>
         </div>
-        <div class="whistle-cards" role="list">
+        <div class="whistle-carousel" data-whistle-carousel>
+          <div class="whistle-carousel-controls">
+            <span class="whistle-scroll-status" data-whistle-status aria-live="polite">01–05 / 10</span>
+            <div class="whistle-carousel-actions">
+              <button class="whistle-scroll whistle-scroll-prev" type="button" data-whistle-scroll="-1" aria-label="Previous whistle">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12.5 4.5-5 5.5 5 5.5" /></svg>
+              </button>
+              <button class="whistle-scroll whistle-scroll-next" type="button" data-whistle-scroll="1" aria-label="Next whistle">
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4.5 5 5.5-5 5.5" /></svg>
+              </button>
+            </div>
+          </div>
+          <div class="whistle-cards" id="whistle-cards" role="list" tabindex="0">
           <article class="whistle-card luna-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/luna.png?v=5" alt="Spectrogram of Luna&apos;s signature whistle" /></div><div><span>SW / 01</span><strong>Luna</strong><small>Signature whistle</small></div></article>
           <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/neo.png" alt="Spectrogram of Neo&apos;s signature whistle" /></div><div><span>SW / 02</span><strong>Neo</strong><small>Signature whistle</small></div></article>
           <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/nana.png" alt="Spectrogram of Nana's rising signature whistle" /></div><div><span>SW / 03</span><strong>Nana</strong><small>Signature whistle</small></div></article>
           <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/nikita.png" alt="Spectrogram of Nikita's signature whistle" /></div><div><span>SW / 04</span><strong>Nikita</strong><small>Signature whistle</small></div></article>
           <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/yosefa.png" alt="Spectrogram of Yosefa's signature whistle" /></div><div><span>SW / 05</span><strong>Yosefa</strong><small>Signature whistle</small></div></article>
+          <article class="whistle-card dana-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/dana.png?v=4" alt="Spectrogram of Dana's signature whistle" /></div><div><span>SW / 06</span><strong>Dana</strong><small>Signature whistle</small></div></article>
+          <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/shy.png" alt="Spectrogram of Shy.s signature whistle" /></div><div><span>SW / 07</span><strong>Shy</strong><small>Signature whistle</small></div></article>
+          <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/nsw-1.png" alt="Spectrogram of non-signature whistle type 1" /></div><div><span>NSW / 01</span><strong>NSW 1</strong><small>Non-signature whistle</small></div></article>
+          <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/nsw-2.png?v=4" alt="Spectrogram of non-signature whistle type 2" /></div><div><span>NSW / 02</span><strong>NSW 2</strong><small>Non-signature whistle</small></div></article>
+          <article class="whistle-card" role="listitem"><div class="whistle-art"><img src="../assets/images/whistles/nsw-3.png" alt="Spectrogram of non-signature whistle type 3" /></div><div><span>NSW / 03</span><strong>NSW 3</strong><small>Non-signature whistle</small></div></article>
+          </div>
         </div>
       </section>
 
@@ -351,6 +381,6 @@
     </footer>
 
 
-    <script src="../script.js?v=20"></script>
+    <script src="../script.js?v=22"></script>
   </body>
 </html>
