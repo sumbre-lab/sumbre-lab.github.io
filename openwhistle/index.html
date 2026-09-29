@@ -170,7 +170,7 @@
           <article class="metric reveal"><span class="metric-no" data-count="180000">180,000</span><h3>whistles</h3><p>The largest publicly available dolphin-vocalization corpus to date.</p></article>
           <article class="metric reveal"><span class="metric-no" data-count="114">114</span><h3>hours of audio</h3><p>Raw acoustic material suited to large-scale self-supervised pretraining.</p></article>
           <article class="metric reveal"><span class="metric-no" data-count="5">5</span><h3>years</h3><p>Longitudinal recordings with contiguous sequences and changing social context.</p></article>
-          <article class="metric reveal"><span class="metric-no" data-count="8354">8,354</span><h3>expert labels</h3><p>Ten whistle types, manually reviewed for fine-grained evaluation.</p></article>
+          <article class="metric reveal"><span class="metric-no" data-count="8354">8,354</span><h3>expert labels</h3><p>Whistles labeled by experts within their original sequence context.</p></article>
         </div>
         <figure class="feature-figure reveal">
           <img src="../assets/images/dataset/site-and-repertoire.webp" alt="Dolphin Reef recording site and representative signature and non-signature whistle spectrograms" />
@@ -231,7 +231,7 @@
             </article>
           </div>
 
-          <div class="pipeline-split" aria-hidden="true"><span>POSITIVE DETECTIONS</span><i></i></div>
+          <div class="pipeline-split" aria-hidden="true"><span>DETECTIONS &rarr; SEQUENCES</span><i></i></div>
 
           <div class="pipeline-branches">
             <span class="branch-route" aria-hidden="true"><i></i><i></i></span>
@@ -247,9 +247,9 @@
                 <i aria-hidden="true">&rarr;</i>
                 <figure><img src="../assets/images/pipeline/artwarp.png" alt="ARTwarp contour clustering network" /><figcaption>ARTwarp</figcaption></figure>
                 <i aria-hidden="true">&rarr;</i>
-                <figure class="map-review-stack"><div><img src="../assets/images/pipeline/expert-yosefa.png" alt="" /><img src="../assets/images/pipeline/expert-neo.png" alt="" /><img src="../assets/images/pipeline/expert-nana.png" alt="" /></div><figcaption>Review</figcaption></figure>
+                <figure class="map-review-stack"><div><img src="../assets/images/pipeline/expert-yosefa.png" alt="" /><img src="../assets/images/pipeline/expert-neo.png" alt="" /><img src="../assets/images/pipeline/expert-nana.png" alt="" /></div><figcaption>Sequence review</figcaption></figure>
               </div>
-              <div class="branch-result"><strong>8,354</strong><span>reviewed whistles</span><small>10 validated types &middot; 1.9 h</small></div>
+              <div class="branch-result"><strong>8,354</strong><span>whistle labels</span><small>reviewed in sequence &middot; 10 types</small></div>
             </article>
           </div>
         </div>
