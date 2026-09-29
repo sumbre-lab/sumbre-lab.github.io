@@ -760,3 +760,21 @@ h2 em { color: #764ba2; font-family: Georgia, serif; font-weight: 400; }
 @keyframes pipeline-fork-right{0%,3%{left:50%;opacity:0}7%{opacity:1}16%{left:calc(100% - 7px);opacity:1}21%,100%{left:calc(100% - 7px);opacity:0}}
 .pipeline-branch:after{animation:pipeline-branch-clean 7s 3.45s ease-in-out infinite}
 @media(max-width:680px){.branch-route{display:none}}
+
+
+/* Compact pipeline proportions */
+.pipeline-map{max-width:1160px;margin-top:48px;border-radius:20px;box-shadow:0 16px 44px rgba(29,29,31,.045)}
+.pipeline-shared{padding:24px 30px 18px;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr) 44px minmax(0,1fr)}
+.pipeline-map-node{min-height:172px;padding:17px;border-radius:13px;background:#fafafa}
+.map-node-label strong{font-size:12px}.pipeline-map-node>small{font-size:8px}
+.audio-map-node .real-waveform{height:72px}
+.map-spectrograms{width:138px;height:82px}.map-spectrograms img{width:68px;height:68px}.map-spectrograms img:nth-child(1){left:0;top:14px}.map-spectrograms img:nth-child(2){left:34px;top:7px}.map-spectrograms img:nth-child(3){right:0;top:0}
+.cnn-diagram{grid-template-columns:42px minmax(62px,1fr) 60px;gap:8px}.cnn-diagram>img{width:42px;height:42px}.cnn-layers{height:54px;gap:3px}.cnn-layers i{width:8px;height:39px}.cnn-layers i:nth-child(2){height:45px}.cnn-layers i:nth-child(3){height:51px}.cnn-layers i:nth-child(4){width:6px;height:34px}.cnn-layers i:nth-child(5){width:5px;height:22px}.cnn-head{min-height:52px;padding:7px 5px;border-radius:6px}.cnn-head b{font-size:14px}.cnn-head span{font-size:6px}
+.pipeline-split{height:54px}.pipeline-split span{padding:6px 10px;font-size:7px}
+.pipeline-branches{padding:0 18px 18px;gap:14px}.pipeline-branch{min-height:274px;padding:20px;border-radius:14px}.pipeline-branch:before{height:16px}
+.pipeline-branch header{padding:1px 0 12px}.pipeline-branch h3{margin-top:4px;font-size:21px}
+.pretraining-branch figure{margin:14px 0 0}.pretraining-branch figure img{height:70px}.pipeline-branch figcaption{margin-top:7px;font-size:8px}
+.annotation-mini-flow{min-height:100px;margin:11px 0;grid-template-columns:1fr 14px .58fr 14px 1fr}.annotation-mini-flow figure>img{height:67px}.map-review-stack>div{height:67px;gap:2px}.map-review-stack img{max-height:20px}
+.branch-result{padding-top:13px;gap:1px 10px}.branch-result strong{font-size:34px}.branch-result span{font-size:10px}.branch-result small{font-size:8px}
+@media(max-width:900px) and (min-width:681px){.pipeline-shared{padding:20px 18px 15px;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr) 30px minmax(0,1fr)}.pipeline-map-node{min-height:166px;padding:14px}.cnn-diagram{grid-template-columns:36px minmax(52px,1fr) 50px;gap:5px}.cnn-diagram>img{width:36px;height:36px}.cnn-head span{display:none}.pipeline-branches{padding:0 14px 14px}.pipeline-branch{padding:17px}.pipeline-branch h3{font-size:19px}}
+@media(max-width:680px){.pipeline-map{margin-top:38px}.pipeline-shared{padding:16px}.pipeline-map-node{min-height:170px;padding:16px}.pipeline-split{height:62px}.pipeline-branches{padding:0 12px 12px}.pipeline-branch{min-height:268px;padding:19px}.cnn-diagram{grid-template-columns:46px minmax(80px,1fr) 68px}.cnn-diagram>img{width:46px;height:46px}.pretraining-branch figure img{height:76px}}
