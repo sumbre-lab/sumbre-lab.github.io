@@ -6,7 +6,7 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=163" />
+    <link rel="stylesheet" href="../styles.css?v=165" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
@@ -214,13 +214,20 @@
             </article>
             <span class="pipeline-link pipeline-link-two" aria-hidden="true"><i></i></span>
             <article class="pipeline-map-node detector-map-node">
-              <div class="map-node-label"><span>03</span><strong>VGG16 detector</strong></div>
-              <div class="cnn-diagram" aria-label="Spectrogram processed by a VGG16 convolutional backbone and binary classification head">
-                <img src="../assets/images/pipeline/window-01.png" alt="Whistle spectrogram input" />
-                <div class="cnn-layers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-                <div class="cnn-head"><b>CNN</b><span>whistle / noise</span></div>
+              <div class="map-node-label"><span>03</span><strong>Whistle detection</strong></div>
+              <div class="detection-demo" aria-label="Real noise and whistle windows alternate through the CNN classifier">
+                <figure class="detection-example noise-example">
+                  <img src="../assets/images/pipeline/detector-noise.webp" alt="Real OpenWhistle noise spectrogram" />
+                  <span class="detection-cnn" aria-hidden="true">CNN</span>
+                  <figcaption><strong>Noise</strong><span>Discard</span></figcaption>
+                </figure>
+                <figure class="detection-example whistle-example">
+                  <img src="../assets/images/pipeline/detector-whistle.webp" alt="Real OpenWhistle spectrogram containing a whistle" />
+                  <span class="detection-cnn" aria-hidden="true">CNN</span>
+                  <figcaption><strong>Whistle</strong><span>Keep</span></figcaption>
+                </figure>
               </div>
-              <small>ImageNet backbone &middot; FC 50 &rarr; 20 &rarr; 2</small>
+              <small>Real OpenWhistle windows &middot; binary classification</small>
             </article>
           </div>
 

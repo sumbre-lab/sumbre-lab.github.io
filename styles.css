@@ -778,3 +778,38 @@ h2 em { color: #764ba2; font-family: Georgia, serif; font-weight: 400; }
 .branch-result{padding-top:13px;gap:1px 10px}.branch-result strong{font-size:34px}.branch-result span{font-size:10px}.branch-result small{font-size:8px}
 @media(max-width:900px) and (min-width:681px){.pipeline-shared{padding:20px 18px 15px;grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr) 30px minmax(0,1fr)}.pipeline-map-node{min-height:166px;padding:14px}.cnn-diagram{grid-template-columns:36px minmax(52px,1fr) 50px;gap:5px}.cnn-diagram>img{width:36px;height:36px}.cnn-head span{display:none}.pipeline-branches{padding:0 14px 14px}.pipeline-branch{padding:17px}.pipeline-branch h3{font-size:19px}}
 @media(max-width:680px){.pipeline-map{margin-top:38px}.pipeline-shared{padding:16px}.pipeline-map-node{min-height:170px;padding:16px}.pipeline-split{height:62px}.pipeline-branches{padding:0 12px 12px}.pipeline-branch{min-height:268px;padding:19px}.cnn-diagram{grid-template-columns:46px minmax(80px,1fr) 68px}.cnn-diagram>img{width:46px;height:46px}.pretraining-branch figure img{height:76px}}
+
+/* Real binary examples and detector-output routing */
+.pipeline-shared{padding-bottom:0}
+.detection-demo{position:relative;height:82px;margin:auto 0;overflow:hidden;border:1px solid #dedee1;border-radius:9px;background:#fff}
+.detection-example{position:absolute;inset:0;margin:0;padding:8px;display:grid;grid-template-columns:112px 34px minmax(0,1fr);align-items:center;gap:9px}
+.detection-example img{display:block;width:112px;height:64px;object-fit:cover;border-radius:5px;background:#e9e9eb}
+.detection-example figcaption{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:5px}
+.detection-example figcaption strong{font-size:14px;letter-spacing:-.02em}
+.detection-example figcaption span{color:#86868b;font-size:7px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.detection-cnn{position:relative;padding:8px 4px;border-radius:6px;color:#fff;background:#1d1d1f;font-size:7px;font-weight:700;letter-spacing:.04em;text-align:center}
+.detection-cnn:after{content:"";position:absolute;right:-7px;top:50%;width:7px;border-top:1px solid #a1a1a6}
+.noise-example{animation:detection-noise-cycle 7s ease-in-out infinite}
+.whistle-example{animation:detection-whistle-cycle 7s ease-in-out infinite}
+.whistle-example figcaption strong{color:#0068d1}
+@keyframes detection-noise-cycle{0%,40%{opacity:1;transform:translateX(0)}46%,94%{opacity:0;transform:translateX(-8px)}98%,100%{opacity:1;transform:translateX(0)}}
+@keyframes detection-whistle-cycle{0%,44%{opacity:0;transform:translateX(8px)}50%,92%{opacity:1;transform:translateX(0)}98%,100%{opacity:0;transform:translateX(8px)}}
+
+.pipeline-split{--detector-output-x:83%}
+.pipeline-split:before{left:var(--detector-output-x);top:0;bottom:0}
+.pipeline-split:after{display:none}
+.pipeline-split span{position:absolute;left:var(--detector-output-x);top:50%;transform:translate(-50%,-50%)}
+.pipeline-split i{left:calc(var(--detector-output-x) - 3px);animation:pipeline-detector-output 7s linear infinite}
+@keyframes pipeline-detector-output{0%,58%{top:0;opacity:0}62%{top:0;opacity:1}80%{top:calc(100% - 6px);opacity:1}85%,100%{top:calc(100% - 6px);opacity:0}}
+.pipeline-branches:before{left:25%;right:17%}
+.branch-route{left:25%;right:17%}
+.branch-route i{left:calc(100% - 7px)}
+.branch-route i:first-child{animation:pipeline-fork-from-detector-left 7s linear infinite}
+.branch-route i:last-child{animation:pipeline-fork-from-detector-right 7s linear infinite}
+@keyframes pipeline-fork-from-detector-left{0%,78%{left:calc(100% - 7px);opacity:0}81%{opacity:1}94%{left:0;opacity:1}98%,100%{left:0;opacity:0}}
+@keyframes pipeline-fork-from-detector-right{0%,78%{left:calc(100% - 7px);opacity:0}81%{opacity:1}90%{left:86%;opacity:1}96%,100%{left:86%;opacity:0}}
+.pipeline-branch:after{animation:pipeline-branch-from-detector 7s linear infinite}
+@keyframes pipeline-branch-from-detector{0%,89%{top:-3px;opacity:0}92%{opacity:1}98%{top:13px;opacity:1}100%{top:13px;opacity:0}}
+@media(max-width:900px) and (min-width:681px){.detection-example{grid-template-columns:76px 27px minmax(0,1fr);gap:6px}.detection-example img{width:76px;height:48px}.detection-example figcaption strong{font-size:12px}.detection-cnn{font-size:6px}}
+@media(max-width:680px){.pipeline-split{--detector-output-x:50%}.detection-demo{height:90px}.detection-example{grid-template-columns:112px 36px minmax(0,1fr)}.detection-example img{width:112px;height:64px}}
+@media(prefers-reduced-motion:reduce){.detection-example{animation:none}.noise-example{display:none}.whistle-example{opacity:1;transform:none}.pipeline-split i,.branch-route i,.pipeline-branch:after{animation:none;display:none}}
