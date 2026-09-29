@@ -708,9 +708,7 @@ h2 em { color: #764ba2; font-family: Georgia, serif; font-weight: 400; }
 
 
 /* OpenWhistle paper pipeline figure */
-.paper-pipeline-figure{max-width:1120px;margin:48px auto 0;padding:18px 18px 13px;border:1px solid #dedee2;border-radius:22px;background:#fff;box-shadow:0 18px 55px rgba(29,29,31,.05)}
+.paper-pipeline-figure{max-width:1120px;margin:48px auto 0}
 .paper-pipeline-scroll{overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;scrollbar-color:#c7c7cc transparent}
 .paper-pipeline-figure img{display:block;width:100%;height:auto}
-.paper-pipeline-figure figcaption{padding:11px 4px 1px;color:#86868b;font-size:9px;letter-spacing:.015em;border-top:1px solid #eeeeef}
-.paper-pipeline-figure figcaption span{margin-right:8px;color:#6e6e73;font-size:8px;font-weight:700;letter-spacing:.09em}
-@media(max-width:680px){.paper-pipeline-figure{margin-top:38px;padding:10px 10px 9px;border-radius:16px}.paper-pipeline-scroll{margin:0 -1px}.paper-pipeline-figure img{width:820px;max-width:none}.paper-pipeline-figure figcaption{padding-top:9px;font-size:8px}}
+@media(max-width:680px){.paper-pipeline-figure{margin-top:38px}.paper-pipeline-figure img{width:820px;max-width:none}}
