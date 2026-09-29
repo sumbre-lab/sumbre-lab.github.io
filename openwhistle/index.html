@@ -228,12 +228,12 @@
             </div>
             <div class="results-table-scroll">
               <table class="results-table">
-                <thead><tr><th scope="col">Backbone</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <thead><tr><th scope="col">Backbone</th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
                 <tbody>
-                  <tr><th scope="row"><strong>AVES-Core</strong><span>general audio</span></th><td>67.39 <small>± 2.14</small></td><td>51.00 <small>± 2.68</small></td><td>51.57 <small>± 2.34</small></td><td>57.40 <small>± 2.10</small></td></tr>
-                  <tr><th scope="row"><strong>BioLingual</strong><span>audio–text</span></th><td>70.98 <small>± 2.05</small></td><td>52.93 <small>± 2.11</small></td><td>54.00 <small>± 2.77</small></td><td>66.50 <small>± 2.20</small></td></tr>
-                  <tr><th scope="row"><strong>AVES-Bio</strong><span>animal vocalizations</span></th><td>75.13 <small>± 2.03</small></td><td>51.24 <small>± 2.52</small></td><td>52.69 <small>± 2.31</small></td><td>65.00 <small>± 2.30</small></td></tr>
-                  <tr class="result-highlight"><th scope="row"><strong>Wav2Vec2.0</strong><span>OpenWhistle · released checkpoint</span></th><td class="result-best">81.67 <small>± 1.80</small></td><td class="result-best">59.91 <small>± 2.57</small></td><td class="result-best">64.37 <small>± 2.67</small></td><td class="result-best">75.76 <small>± 2.02</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Core</strong><span>general audio</span></th><td>51.57 <small>± 2.34</small></td><td>51.00 <small>± 2.68</small></td><td>67.39 <small>± 2.14</small></td><td>57.40 <small>± 2.10</small></td></tr>
+                  <tr><th scope="row"><strong>BioLingual</strong><span>audio–text</span></th><td>54.00 <small>± 2.77</small></td><td>52.93 <small>± 2.11</small></td><td>70.98 <small>± 2.05</small></td><td>66.50 <small>± 2.20</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio</strong><span>animal vocalizations</span></th><td>52.69 <small>± 2.31</small></td><td>51.24 <small>± 2.52</small></td><td>75.13 <small>± 2.03</small></td><td>65.00 <small>± 2.30</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>Wav2Vec2.0</strong><span>OpenWhistle · released checkpoint</span></th><td class="result-best">64.37 <small>± 2.67</small></td><td class="result-best">59.91 <small>± 2.57</small></td><td class="result-best">81.67 <small>± 1.80</small></td><td class="result-best">75.76 <small>± 2.02</small></td></tr>
                 </tbody>
               </table>
             </div>
@@ -247,14 +247,14 @@
             </div>
             <div class="results-table-scroll">
               <table class="results-table">
-                <thead><tr><th scope="col">Checkpoint</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <thead><tr><th scope="col">Checkpoint</th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
                 <tbody>
-                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>10% of data</span></th><td>70.40 <small>± 2.14</small></td><td>50.03 <small>± 2.66</small></td><td>47.99 <small>± 2.32</small></td><td>65.43 <small>± 2.21</small></td></tr>
-                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>50% of data</span></th><td>67.12 <small>± 2.16</small></td><td>50.73 <small>± 2.53</small></td><td>50.27 <small>± 2.58</small></td><td>64.14 <small>± 2.22</small></td></tr>
-                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>100% of data</span></th><td>70.14 <small>± 2.13</small></td><td>53.01 <small>± 2.63</small></td><td>51.54 <small>± 2.54</small></td><td>68.49 <small>± 2.08</small></td></tr>
-                  <tr><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>10% of data</span></th><td>78.08 <small>± 1.94</small></td><td>56.05 <small>± 2.48</small></td><td>57.86 <small>± 2.79</small></td><td>69.91 <small>± 2.06</small></td></tr>
-                  <tr><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>50% of data</span></th><td>78.11 <small>± 1.92</small></td><td>56.98 <small>± 2.52</small></td><td>58.15 <small>± 2.60</small></td><td>71.19 <small>± 1.98</small></td></tr>
-                  <tr class="result-highlight"><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>100% of data</span></th><td class="result-best">80.60 <small>± 1.84</small></td><td class="result-best">58.91 <small>± 2.86</small></td><td class="result-best">63.53 <small>± 2.93</small></td><td class="result-best">73.93 <small>± 2.13</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>10% of data</span></th><td>47.99 <small>± 2.32</small></td><td>50.03 <small>± 2.66</small></td><td>70.40 <small>± 2.14</small></td><td>65.43 <small>± 2.21</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>50% of data</span></th><td>50.27 <small>± 2.58</small></td><td>50.73 <small>± 2.53</small></td><td>67.12 <small>± 2.16</small></td><td>64.14 <small>± 2.22</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>100% of data</span></th><td>51.54 <small>± 2.54</small></td><td>53.01 <small>± 2.63</small></td><td>70.14 <small>± 2.13</small></td><td>68.49 <small>± 2.08</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>10% of data</span></th><td>57.86 <small>± 2.79</small></td><td>56.05 <small>± 2.48</small></td><td>78.08 <small>± 1.94</small></td><td>69.91 <small>± 2.06</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>50% of data</span></th><td>58.15 <small>± 2.60</small></td><td>56.98 <small>± 2.52</small></td><td>78.11 <small>± 1.92</small></td><td>71.19 <small>± 1.98</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>100% of data</span></th><td class="result-best">63.53 <small>± 2.93</small></td><td class="result-best">58.91 <small>± 2.86</small></td><td class="result-best">80.60 <small>± 1.84</small></td><td class="result-best">73.93 <small>± 2.13</small></td></tr>
                 </tbody>
               </table>
             </div>
@@ -268,11 +268,11 @@
             </div>
             <div class="results-table-scroll">
               <table class="results-table">
-                <thead><tr><th scope="col">Checkpoint</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <thead><tr><th scope="col">Checkpoint</th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
                 <tbody>
-                  <tr><th scope="row"><strong>Wav2Vec2.0</strong><span>stride 960 · 10% · 40k steps</span></th><td>34.78 <small>± 2.18</small></td><td>22.11 <small>± 1.37</small></td><td>22.65 <small>± 1.07</small></td><td>20.76 <small>± 1.34</small></td></tr>
-                  <tr><th scope="row"><strong>Wav2Vec2.0</strong><span>stride 960 · 50% · 200k steps</span></th><td>77.66 <small>± 1.98</small></td><td>59.34 <small>± 2.99</small></td><td>56.53 <small>± 2.61</small></td><td>77.03 <small>± 2.09</small></td></tr>
-                  <tr class="result-highlight"><th scope="row"><strong>Wav2Vec2.0</strong><span>stride 960 · 100% · 400k steps</span></th><td class="result-best">80.83 <small>± 1.87</small></td><td class="result-best">61.22 <small>± 3.04</small></td><td class="result-best">60.57 <small>± 2.98</small></td><td class="result-best">80.80 <small>± 1.91</small></td></tr>
+                  <tr><th scope="row"><strong>Wav2Vec2.0</strong><span>stride 960 · 10% · 40k steps</span></th><td>22.65 <small>± 1.07</small></td><td>22.11 <small>± 1.37</small></td><td>34.78 <small>± 2.18</small></td><td>20.76 <small>± 1.34</small></td></tr>
+                  <tr><th scope="row"><strong>Wav2Vec2.0</strong><span>stride 960 · 50% · 200k steps</span></th><td>56.53 <small>± 2.61</small></td><td>59.34 <small>± 2.99</small></td><td>77.66 <small>± 1.98</small></td><td>77.03 <small>± 2.09</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>Wav2Vec2.0</strong><span>stride 960 · 100% · 400k steps</span></th><td class="result-best">60.57 <small>± 2.98</small></td><td class="result-best">61.22 <small>± 3.04</small></td><td class="result-best">80.83 <small>± 1.87</small></td><td class="result-best">80.80 <small>± 1.91</small></td></tr>
                 </tbody>
               </table>
             </div>
@@ -282,22 +282,22 @@
           <section class="benchmark-result-panel" id="result-panel-finetuning" role="tabpanel" aria-labelledby="result-tab-finetuning" data-result-panel="finetuning" hidden>
             <div class="benchmark-performance-summary">
               <p>Best end-to-end result</p>
-              <div><article><strong>79.60<small>%</small></strong><span>Balanced macro-F1</span></article><article><strong>77.02<small>%</small></strong><span>Detection mAP</span></article></div>
+              <div><article><strong>59.54<small>%</small></strong><span>Full-set macro-F1</span></article><article><strong>77.02<small>%</small></strong><span>Detection mAP</span></article></div>
             </div>
             <div class="results-table-scroll">
               <table class="results-table">
-                <thead><tr><th scope="col">Backbone</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <thead><tr><th scope="col">Backbone</th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
                 <tbody>
-                  <tr><th scope="row"><strong>AVES-Core</strong><span>end-to-end</span></th><td>77.37 <small>± 0.85</small></td><td>61.24 <small>± 4.58</small></td><td>57.29 <small>± 1.73</small></td><td>74.10 <small>± 1.26</small></td></tr>
-                  <tr><th scope="row"><strong>BioLingual</strong><span>end-to-end</span></th><td>78.99 <small>± 1.56</small></td><td>57.55 <small>± 1.46</small></td><td>54.32 <small>± 2.79</small></td><td>72.26 <small>± 0.44</small></td></tr>
-                  <tr class="result-highlight"><th scope="row"><strong>AVES-Bio</strong><span>end-to-end</span></th><td class="result-best">79.60 <small>± 0.62</small></td><td class="result-best">62.06 <small>± 0.89</small></td><td class="result-best">59.54 <small>± 1.05</small></td><td class="result-best">77.02 <small>± 1.31</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Core</strong><span>end-to-end</span></th><td>57.29 <small>± 1.73</small></td><td>61.24 <small>± 4.58</small></td><td>77.37 <small>± 0.85</small></td><td>74.10 <small>± 1.26</small></td></tr>
+                  <tr><th scope="row"><strong>BioLingual</strong><span>end-to-end</span></th><td>54.32 <small>± 2.79</small></td><td>57.55 <small>± 1.46</small></td><td>78.99 <small>± 1.56</small></td><td>72.26 <small>± 0.44</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>AVES-Bio</strong><span>end-to-end</span></th><td class="result-best">59.54 <small>± 1.05</small></td><td class="result-best">62.06 <small>± 0.89</small></td><td class="result-best">79.60 <small>± 0.62</small></td><td class="result-best">77.02 <small>± 1.31</small></td></tr>
                 </tbody>
               </table>
             </div>
             <div class="benchmark-task"><span>Task</span><div><h3>End-to-end classification &amp; detection</h3><p>Optimize the encoder and prediction head jointly on expert-labeled OpenWhistle examples.</p></div><dl><div><dt>Classification</dt><dd>Macro-F1</dd></div><div><dt>Detection</dt><dd>mAP</dd></div></dl></div>
           </section>
 
-          <p class="benchmark-results-note"><strong>Higher is better.</strong> Balanced uses six equally represented whistle types; Natural keeps their observed frequencies; Full set evaluates all ten expert labels. Linear-probe uncertainty is estimated by bootstrap; fine-tuning reports variation across three seeds.</p>
+          <p class="benchmark-results-note"><strong>Higher is better.</strong> Full set evaluates all ten expert labels; Natural keeps the observed frequencies of six types; Balanced gives those six types equal representation. Linear-probe uncertainty is estimated by bootstrap; fine-tuning reports variation across three seeds.</p>
         </div>
       </section>
 
