@@ -6,7 +6,7 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=173" />
+    <link rel="stylesheet" href="../styles.css?v=174" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
@@ -222,7 +222,6 @@
           </div>
 
           <section class="benchmark-result-panel active" id="result-panel-foundation" role="tabpanel" aria-labelledby="result-tab-foundation" data-result-panel="foundation">
-            <header><div><span>01 / TRANSFER</span><h3>Frozen representations</h3></div><p>General bioacoustic encoders versus a model pretrained directly on OpenWhistle.</p></header>
             <div class="benchmark-performance-summary">
               <p>OpenWhistle performance summary</p>
               <div><article><strong>64.37</strong><span>Full-set macro-F1</span></article><article><strong>+11.68</strong><span>vs best general backbone</span></article></div>
@@ -238,10 +237,10 @@
                 </tbody>
               </table>
             </div>
+            <div class="benchmark-task"><span>Task</span><div><h3>Linear-probe classification &amp; detection</h3><p>Classify expert-labeled whistle types with a frozen encoder, then detect whistle-bearing windows.</p></div><dl><div><dt>Classification</dt><dd>Macro-F1</dd></div><div><dt>Detection</dt><dd>mAP</dd></div></dl></div>
           </section>
 
           <section class="benchmark-result-panel" id="result-panel-continued" role="tabpanel" aria-labelledby="result-tab-continued" data-result-panel="continued" hidden>
-            <header><div><span>02 / ADAPTATION</span><h3>Continued pretraining</h3></div><p>AVES-Bio adapted to 10%, 50% or 100% of the OpenWhistle pretraining corpus.</p></header>
             <div class="benchmark-performance-summary">
               <p>Best continued-pretraining result</p>
               <div><article><strong>63.53</strong><span>Full-set macro-F1</span></article><article><strong>+10.84</strong><span>vs off-the-shelf AVES-Bio</span></article></div>
@@ -259,10 +258,10 @@
                 </tbody>
               </table>
             </div>
+            <div class="benchmark-task"><span>Task</span><div><h3>Classification &amp; detection after adaptation</h3><p>Continue pretraining AVES-Bio on unlabeled OpenWhistle audio, then evaluate the adapted frozen encoder.</p></div><dl><div><dt>Classification</dt><dd>Macro-F1</dd></div><div><dt>Detection</dt><dd>mAP</dd></div></dl></div>
           </section>
 
           <section class="benchmark-result-panel" id="result-panel-scratch" role="tabpanel" aria-labelledby="result-tab-scratch" data-result-panel="scratch" hidden>
-            <header><div><span>03 / SCALE</span><h3>Pretraining from scratch</h3></div><p>Wav2Vec2.0 trained only on increasing shares of the OpenWhistle corpus.</p></header>
             <div class="benchmark-performance-summary">
               <p>Data-scale summary</p>
               <div><article><strong>80.80</strong><span>Detection mAP</span></article><article><strong>+7.84</strong><span>Full-set F1 vs 50% data</span></article></div>
@@ -278,10 +277,10 @@
                 </tbody>
               </table>
             </div>
+            <div class="benchmark-task"><span>Task</span><div><h3>Classification &amp; detection across data scales</h3><p>Pretrain Wav2Vec2.0 from scratch on 10%, 50% and 100% of OpenWhistle, then compare frozen encoders.</p></div><dl><div><dt>Classification</dt><dd>Macro-F1</dd></div><div><dt>Detection</dt><dd>mAP</dd></div></dl></div>
           </section>
 
           <section class="benchmark-result-panel" id="result-panel-finetuning" role="tabpanel" aria-labelledby="result-tab-finetuning" data-result-panel="finetuning" hidden>
-            <header><div><span>04 / END TO END</span><h3>Full fine-tuning</h3></div><p>The encoder and prediction head are optimized jointly instead of using frozen representations.</p></header>
             <div class="benchmark-performance-summary">
               <p>Best end-to-end result</p>
               <div><article><strong>79.60</strong><span>Balanced macro-F1</span></article><article><strong>77.02</strong><span>Detection mAP</span></article></div>
@@ -296,6 +295,7 @@
                 </tbody>
               </table>
             </div>
+            <div class="benchmark-task"><span>Task</span><div><h3>End-to-end classification &amp; detection</h3><p>Optimize the encoder and prediction head jointly on expert-labeled OpenWhistle examples.</p></div><dl><div><dt>Classification</dt><dd>Macro-F1</dd></div><div><dt>Detection</dt><dd>mAP</dd></div></dl></div>
           </section>
 
           <p class="benchmark-results-note"><strong>Higher is better.</strong> Balanced uses six equally represented whistle types; Natural keeps their observed frequencies; Full set evaluates all ten expert labels. Linear-probe uncertainty is estimated by bootstrap; fine-tuning reports variation across three seeds.</p>
