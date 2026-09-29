@@ -6,8 +6,7 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=166" />
-  </head>
+    <link rel="stylesheet" href="../styles.css?v=167" /></head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
 
@@ -261,7 +260,13 @@
               </article>
               <article class="pipeline-output-card expert-output-card">
                 <div class="output-card-title"><span>B</span><h3>Expert-annotated set</h3></div>
-                <div class="output-route" aria-label="F0, ARTwarp, expert review"><span>F0</span><i>&rarr;</i><span>ARTwarp</span><i>&rarr;</i><span>Expert</span></div>
+                <div class="expert-route-visual" aria-label="F0 contour estimation, ARTwarp categorization and expert review">
+                  <figure><img src="../assets/images/pipeline/f0-03.png" alt="Estimated F0 contour" /><figcaption>F0 contour</figcaption></figure>
+                  <i aria-hidden="true">&rarr;</i>
+                  <figure><img src="../assets/images/pipeline/artwarp.png" alt="ARTwarp categorization network" /><figcaption>ARTwarp</figcaption></figure>
+                  <i aria-hidden="true">&rarr;</i>
+                  <figure class="expert-review-mini"><div><img src="../assets/images/pipeline/expert-yosefa.png" alt="" /><img src="../assets/images/pipeline/expert-neo.png" alt="" /><img src="../assets/images/pipeline/expert-nana.png" alt="" /></div><figcaption>Expert review</figcaption></figure>
+                </div>
                 <div class="output-stat"><strong>8,354</strong><span>whistle labels</span></div>
                 <p>10 types &middot; reviewed in sequence</p>
               </article>
