@@ -1,31 +1,34 @@
-const benchmarkData = {
-  classification: [
-    ["Spectral features", 34.9], ["MFCCs", 45.6], ["Mean spectrogram", 55.6],
-    ["AVES-core", 68.0], ["BioLingual", 71.3], ["AVES-bio", 75.1], ["Wav2Vec2.0 · OW", 81.1]
-  ],
-  detection: [
-    ["Spectral features", 26.3], ["MFCCs", 33.6], ["Mean spectrogram", 47.7],
-    ["AVES-core", 57.4], ["BioLingual", 66.5], ["AVES-bio", 65.0], ["Wav2Vec2.0 · OW", 75.6]
-  ]
-};
+const benchmarkResults = document.querySelector("[data-benchmark-results]");
+if (benchmarkResults) {
+  const resultTabs = [...benchmarkResults.querySelectorAll("[data-result-tab]")];
+  const resultPanels = [...benchmarkResults.querySelectorAll("[data-result-panel]")];
 
-const chart = document.querySelector(".chart");
-function renderChart(metric) {
-  chart.innerHTML = benchmarkData[metric].map(([name, value], index, rows) => `
-    <div class="bar-row ${index === rows.length - 1 ? "highlight" : ""}">
-      <span>${name}</span><div class="bar-track"><div class="bar-fill" style="--width:${value}%"></div></div><span class="bar-value">${value.toFixed(1)}</span>
-    </div>`).join("");
-}
-renderChart("classification");
+  const showResultPanel = name => {
+    resultTabs.forEach(tab => {
+      const active = tab.dataset.resultTab === name;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    resultPanels.forEach(panel => {
+      const active = panel.dataset.resultPanel === name;
+      panel.classList.toggle("active", active);
+      panel.hidden = !active;
+    });
+  };
 
-document.querySelectorAll(".benchmark-tabs button").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".benchmark-tabs button").forEach(item => { item.classList.remove("active"); item.setAttribute("aria-selected", "false"); });
-    button.classList.add("active");
-    button.setAttribute("aria-selected", "true");
-    renderChart(button.dataset.metric);
+  resultTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => showResultPanel(tab.dataset.resultTab));
+    tab.addEventListener("keydown", event => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const next = (index + direction + resultTabs.length) % resultTabs.length;
+      resultTabs[next].focus();
+      showResultPanel(resultTabs[next].dataset.resultTab);
+    });
   });
-});
+}
 
 const workflow = document.querySelector("[data-workflow]");
 if (workflow) {

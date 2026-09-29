@@ -6,7 +6,7 @@
     <meta name="description" content="OpenWhistle is a large-scale, longitudinal dataset and benchmark for bottlenose dolphin vocalizations." />
     <meta name="theme-color" content="#ffffff" />
     <title>OpenWhistle</title>
-    <link rel="stylesheet" href="../styles.css?v=169" />
+    <link rel="stylesheet" href="../styles.css?v=170" />
   </head>
   <body>
     <div class="progress" aria-hidden="true"><span></span></div>
@@ -210,28 +210,79 @@
         <div class="section-heading light">
           <p class="section-index">05 / THE BENCHMARK</p>
           <h2>In-domain listening<br />makes the difference.</h2>
-          <p>Frozen representations are tested with the same linear probe. The original benchmark shows that a Wav2Vec2.0 encoder trained from scratch on OpenWhistle captures fine-grained structure better than general bioacoustic models.</p>
+          <p>One dataset, four views of the results. Compare general audio models with OpenWhistle pretraining, data scale and end-to-end fine-tuning.</p>
         </div>
-        <div class="benchmark-panel reveal">
-          <div class="benchmark-tabs" role="tablist" aria-label="Benchmark metric">
-            <button class="active" role="tab" aria-selected="true" data-metric="classification">Classification <small>accuracy %</small></button>
-            <button role="tab" aria-selected="false" data-metric="detection">Detection <small>mAP %</small></button>
+
+        <div class="benchmark-results reveal" data-benchmark-results>
+          <div class="benchmark-result-tabs" role="tablist" aria-label="Benchmark result family">
+            <button class="active" id="result-tab-foundation" type="button" role="tab" aria-selected="true" aria-controls="result-panel-foundation" data-result-tab="foundation">Foundation models</button>
+            <button id="result-tab-continued" type="button" role="tab" aria-selected="false" aria-controls="result-panel-continued" data-result-tab="continued">Continued pretraining</button>
+            <button id="result-tab-scratch" type="button" role="tab" aria-selected="false" aria-controls="result-panel-scratch" data-result-tab="scratch">From scratch</button>
+            <button id="result-tab-finetuning" type="button" role="tab" aria-selected="false" aria-controls="result-panel-finetuning" data-result-tab="finetuning">Fine-tuning</button>
           </div>
-          <div class="chart" aria-live="polite">
-            <div class="bar-row"><span>Spectral features</span><div class="bar-track"><div class="bar-fill" style="--width:34.9%"></div></div><span class="bar-value">34.9</span></div>
-            <div class="bar-row"><span>MFCCs</span><div class="bar-track"><div class="bar-fill" style="--width:45.6%"></div></div><span class="bar-value">45.6</span></div>
-            <div class="bar-row"><span>Mean spectrogram</span><div class="bar-track"><div class="bar-fill" style="--width:55.6%"></div></div><span class="bar-value">55.6</span></div>
-            <div class="bar-row"><span>AVES-core</span><div class="bar-track"><div class="bar-fill" style="--width:68%"></div></div><span class="bar-value">68.0</span></div>
-            <div class="bar-row"><span>BioLingual</span><div class="bar-track"><div class="bar-fill" style="--width:71.3%"></div></div><span class="bar-value">71.3</span></div>
-            <div class="bar-row"><span>AVES-bio</span><div class="bar-track"><div class="bar-fill" style="--width:75.1%"></div></div><span class="bar-value">75.1</span></div>
-            <div class="bar-row highlight"><span>Wav2Vec2.0 · OW</span><div class="bar-track"><div class="bar-fill" style="--width:81.1%"></div></div><span class="bar-value">81.1</span></div>
-          </div>
-          <p class="chart-note">Original six-class balanced benchmark · mean over bootstrap resampling. Higher is better.</p>
-        </div>
-        <div class="benchmark-summary-grid">
-          <article class="reveal"><span>REVISED / 10 CLASSES</span><strong>64.37</strong><small>macro-F1</small><p>Wav2Vec2.0 remains best on the full, naturally imbalanced expert set.</p></article>
-          <article class="reveal"><span>IN-DOMAIN EFFECT</span><strong>+9.17</strong><small>F1 points</small><p>Best gain from OpenWhistle pretraining within the AVES-bio architecture.</p></article>
-          <article class="reveal"><span>DATA STILL HELPS</span><strong>+7.84</strong><small>F1 points</small><p>Gain from using 100% instead of 50% of the pretraining corpus.</p></article>
+
+          <section class="benchmark-result-panel active" id="result-panel-foundation" role="tabpanel" aria-labelledby="result-tab-foundation" data-result-panel="foundation">
+            <header><div><span>01 / TRANSFER</span><h3>Frozen representations</h3></div><p>General bioacoustic encoders versus a model pretrained directly on OpenWhistle.</p></header>
+            <div class="results-table-scroll">
+              <table class="results-table">
+                <thead><tr><th scope="col">Backbone</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><strong>AVES-Core</strong><span>general audio</span></th><td>67.39 <small>± 2.14</small></td><td>51.00 <small>± 2.68</small></td><td>51.57 <small>± 2.34</small></td><td>57.40 <small>± 2.10</small></td></tr>
+                  <tr><th scope="row"><strong>BioLingual</strong><span>audio–text</span></th><td>70.98 <small>± 2.05</small></td><td>52.93 <small>± 2.11</small></td><td>54.00 <small>± 2.77</small></td><td>66.50 <small>± 2.20</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio</strong><span>animal vocalizations</span></th><td>75.13 <small>± 2.03</small></td><td>51.24 <small>± 2.52</small></td><td>52.69 <small>± 2.31</small></td><td>65.00 <small>± 2.30</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>Dolph2Vec</strong><span>OpenWhistle</span></th><td class="result-best">81.67 <small>± 1.80</small></td><td class="result-best">59.91 <small>± 2.57</small></td><td class="result-best">64.37 <small>± 2.67</small></td><td class="result-best">75.76 <small>± 2.02</small></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="benchmark-result-panel" id="result-panel-continued" role="tabpanel" aria-labelledby="result-tab-continued" data-result-panel="continued" hidden>
+            <header><div><span>02 / ADAPTATION</span><h3>Continued pretraining</h3></div><p>AVES-Bio adapted to 10%, 50% or 100% of the OpenWhistle pretraining corpus.</p></header>
+            <div class="results-table-scroll">
+              <table class="results-table">
+                <thead><tr><th scope="col">Checkpoint</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>10% of data</span></th><td>70.40 <small>± 2.14</small></td><td>50.03 <small>± 2.66</small></td><td>47.99 <small>± 2.32</small></td><td>65.43 <small>± 2.21</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>50% of data</span></th><td>67.12 <small>± 2.16</small></td><td>50.73 <small>± 2.53</small></td><td>50.27 <small>± 2.58</small></td><td>64.14 <small>± 2.22</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW</strong><span>100% of data</span></th><td>70.14 <small>± 2.13</small></td><td>53.01 <small>± 2.63</small></td><td>51.54 <small>± 2.54</small></td><td>68.49 <small>± 2.08</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>10% of data</span></th><td>78.08 <small>± 1.94</small></td><td>56.05 <small>± 2.48</small></td><td>57.86 <small>± 2.79</small></td><td>69.91 <small>± 2.06</small></td></tr>
+                  <tr><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>50% of data</span></th><td>78.11 <small>± 1.92</small></td><td>56.98 <small>± 2.52</small></td><td>58.15 <small>± 2.60</small></td><td>71.19 <small>± 1.98</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>AVES-Bio + OW · BTB3</strong><span>100% of data</span></th><td class="result-best">80.60 <small>± 1.84</small></td><td class="result-best">58.91 <small>± 2.86</small></td><td class="result-best">63.53 <small>± 2.93</small></td><td class="result-best">73.93 <small>± 2.13</small></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="benchmark-result-panel" id="result-panel-scratch" role="tabpanel" aria-labelledby="result-tab-scratch" data-result-panel="scratch" hidden>
+            <header><div><span>03 / SCALE</span><h3>Pretraining from scratch</h3></div><p>Wav2Vec2.0 trained only on increasing shares of the OpenWhistle corpus.</p></header>
+            <div class="results-table-scroll">
+              <table class="results-table">
+                <thead><tr><th scope="col">Checkpoint</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><strong>Wav2Vec2.0</strong><span>10% · 40k steps</span></th><td>34.78 <small>± 2.18</small></td><td>22.11 <small>± 1.37</small></td><td>22.65 <small>± 1.07</small></td><td>20.76 <small>± 1.34</small></td></tr>
+                  <tr><th scope="row"><strong>Wav2Vec2.0</strong><span>50% · 200k steps</span></th><td>77.66 <small>± 1.98</small></td><td>59.34 <small>± 2.99</small></td><td>56.53 <small>± 2.61</small></td><td>77.03 <small>± 2.09</small></td></tr>
+                  <tr><th scope="row"><strong>Wav2Vec2.0</strong><span>100% · 400k steps</span></th><td>80.83 <small>± 1.87</small></td><td class="result-best">61.22 <small>± 3.04</small></td><td>60.57 <small>± 2.98</small></td><td class="result-best">80.80 <small>± 1.91</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>Dolph2Vec</strong><span>OpenWhistle release</span></th><td class="result-best">81.67 <small>± 1.80</small></td><td>59.91 <small>± 2.57</small></td><td class="result-best">64.37 <small>± 2.67</small></td><td>75.76 <small>± 2.02</small></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="benchmark-result-panel" id="result-panel-finetuning" role="tabpanel" aria-labelledby="result-tab-finetuning" data-result-panel="finetuning" hidden>
+            <header><div><span>04 / END TO END</span><h3>Full fine-tuning</h3></div><p>The encoder and prediction head are optimized jointly instead of using frozen representations.</p></header>
+            <div class="results-table-scroll">
+              <table class="results-table">
+                <thead><tr><th scope="col">Backbone</th><th scope="col">Balanced<small>6 types · F1</small></th><th scope="col">Natural<small>6 types · F1</small></th><th scope="col">Full set<small>10 types · F1</small></th><th scope="col">Detection<small>mAP</small></th></tr></thead>
+                <tbody>
+                  <tr><th scope="row"><strong>AVES-Core</strong><span>end-to-end</span></th><td>77.37 <small>± 0.85</small></td><td>61.24 <small>± 4.58</small></td><td>57.29 <small>± 1.73</small></td><td>74.10 <small>± 1.26</small></td></tr>
+                  <tr><th scope="row"><strong>BioLingual</strong><span>end-to-end</span></th><td>78.99 <small>± 1.56</small></td><td>57.55 <small>± 1.46</small></td><td>54.32 <small>± 2.79</small></td><td>72.26 <small>± 0.44</small></td></tr>
+                  <tr class="result-highlight"><th scope="row"><strong>AVES-Bio</strong><span>end-to-end</span></th><td class="result-best">79.60 <small>± 0.62</small></td><td class="result-best">62.06 <small>± 0.89</small></td><td class="result-best">59.54 <small>± 1.05</small></td><td class="result-best">77.02 <small>± 1.31</small></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <p class="benchmark-results-note"><strong>Higher is better.</strong> Balanced uses six equally represented whistle types; Natural keeps their observed frequencies; Full set evaluates all ten expert labels. Linear-probe uncertainty is estimated by bootstrap; fine-tuning reports variation across three seeds.</p>
         </div>
       </section>
 
@@ -285,6 +336,6 @@
     </footer>
 
 
-    <script src="../script.js?v=19"></script>
+    <script src="../script.js?v=20"></script>
   </body>
 </html>
